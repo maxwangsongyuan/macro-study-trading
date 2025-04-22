@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="title">J. Law 交易智慧</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 data-lang-key="mainHeading">J. Law 交易智慧</h1>
+        <button id="lang-toggle" data-lang-key="toggleButton">切换英文</button>
+    </header>
+
+    <main>
+        <div id="topic-cards">
+            <div class="topic-card" data-topic="rules">
+                <img src="images/Screenshot%202025-04-20%20at%208.52.05%E2%80%AFPM.png" alt="Trading Rules Abstract Image">
+                <h3 data-lang-key="rulesHeading">交易守则</h3>
+            </div>
+            <div class="topic-card" data-topic="mindset">
+                <img src="images/Screenshot%202025-04-20%20at%208.52.12%E2%80%AFPM.png" alt="Trading Mindset Concept Image">
+                <h3 data-lang-key="mindsetHeading">交易思维</h3>
+            </div>
+            <div class="topic-card" data-topic="routine">
+                <img src="images/Screenshot%202025-04-20%20at%208.52.19%E2%80%AFPM.png" alt="Daily Routine Planning Image">
+                <h3 data-lang-key="routineHeading">每日流程</h3>
+            </div>
+            <div class="topic-card" data-topic="guidelines">
+                <img src="images/Screenshot%202025-04-20%20at%208.52.27%E2%80%AFPM.png" alt="Trading Guidelines Checklist Image">
+                <h3 data-lang-key="guidelinesHeading">交易指南</h3>
+            </div>
+            <div class="topic-card" data-topic="macro-guide-text"> <!-- Changed data-topic for clarity -->
+                <a href="pages/macro-analysis-guide-en.html"> <!-- Link to the text guide -->
+                    <img src="images/Screenshot%202025-04-20%20at%208.52.05%E2%80%AFPM.png" alt="Macro Analysis Guide Abstract Image">
+                    <h3 data-lang-key="macroGuideHeading">宏观分析指南</h3>
+                </a>
+            </div>
+            <div class="topic-card" data-topic="macro-dashboard"> <!-- New card for dashboard -->
+                <a href="pages/tradingview-dashboard.html">
+                     <!-- Reusing another image, ideally replace -->
+                    <img src="images/Screenshot%202025-04-20%20at%208.52.12%E2%80%AFPM.png" alt="Market Dashboard Concept Image">
+                    <h3 data-lang-key="dashboardHeading">市场仪表板</h3>
+                </a>
+            </div>
+        </div>
+
+        <div id="content-display">
+            <!-- Detailed content will be loaded here by JavaScript -->
+             <p class="placeholder" data-lang-key="selectTopicPrompt">请点击上方一个主题查看详细内容。</p>
+        </div>
+
+        <section id="resources">
+            <h2 data-lang-key="resourcesHeading">资源</h2>
+            <ul>
+                <li><a href="https://www.google.com/" target="_blank" data-lang-key="resource1">Train the Trader 21天训练计划</a></li>
+                <li><a href="https://www.google.com/" target="_blank" data-lang-key="resource2">Master Your Trade 会员</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p data-lang-key="footerCredit">内容来源：超绩投资客 J Law</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

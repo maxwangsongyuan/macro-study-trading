@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro Dashboard</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; margin: auto; background-color: #f4f4f4; }
+        h1, h2 { color: #333; text-align: center; }
+        h2 { border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px; }
+        .widget-section { margin-bottom: 40px; background-color: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .navigation { margin-bottom: 20px; text-align: center; }
+        .navigation a { margin: 0 15px; color: #007bff; text-decoration: none; font-weight: bold; }
+        .navigation a:hover { text-decoration: underline; }
+        .tradingview-widget-container { margin: auto; } /* Center widgets if needed */
+         /* Ensure copyright is visible */
+        .tradingview-widget-copyright { text-align: center; font-size: 13px; color: #9db2bd; margin-top: 8px; }
+        .tradingview-widget-copyright .blue-text { color: #2962FF; }
+        .tradingview-widget-copyright a { text-decoration: none; color: #9db2bd; }
+        .tradingview-widget-copyright a:visited { color: #9db2bd; }
+        .tradingview-widget-copyright a:hover { text-decoration: underline; color: #2962FF; }
+    </style>
+</head>
+<body>
+
+    <h1>Macro Dashboard</h1>
+
+    <div class="navigation">
+        <a href="macro-analysis-guide-en.html">View English Guide</a> |
+        <a href="macro-analysis-guide-zh.html">View Chinese Guide</a> |
+        <a href="../index.html">Back to Home</a>
+    </div>
+
+    <div class="widget-section">
+        <h2>Foreign Exchange (FX)</h2>
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:400px; width:100%;">
+          <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px); width:100%;"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+          {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "en",
+          "largeChartUrl": "",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "showFloatingTooltip": false,
+          "width": "100%",
+          "height": "400",
+          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+          "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+          "gridLineColor": "rgba(240, 243, 250, 0)",
+          "scaleFontColor": "rgba(15, 15, 15, 1)",
+          "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+          "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+          "tabs": [
+            {
+              "title": "Forex",
+              "symbols": [
+                {"s": "FX_IDC:DXY", "d": "US Dollar Index"},
+                {"s": "FX:EURUSD", "d": "EUR/USD"},
+                {"s": "FX:GBPUSD", "d": "GBP/USD"},
+                {"s": "FX:USDJPY", "d": "USD/JPY"},
+                {"s": "FX:USDCNH", "d": "USD/CNH"},
+                {"s": "FX:USDKRW", "d": "USD/KRW"},
+                {"s": "FX:USDCHF", "d": "USD/CHF"},
+                {"s": "FX:AUDUSD", "d": "AUD/USD"},
+                {"s": "FX:USDCAD", "d": "USD/CAD"},
+                {"s": "FX:NZDUSD", "d": "NZD/USD"}
+              ],
+              "originalTitle": "Forex"
+            }
+          ]
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+    <div class="widget-section">
+        <h2>Equity Indices</h2>
+         <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:400px; width:100%;">
+          <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px); width:100%;"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+          {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "en",
+          "largeChartUrl": "",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "showFloatingTooltip": false,
+          "width": "100%",
+          "height": "400",
+          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+          "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+          "gridLineColor": "rgba(240, 243, 250, 0)",
+          "scaleFontColor": "rgba(15, 15, 15, 1)",
+          "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+          "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+          "tabs": [
+            {
+              "title": "Indices",
+              "symbols": [
+                {"s": "SP:SPX", "d": "S&P 500"},
+                {"s": "NASDAQ:NDX", "d": "Nasdaq 100"},
+                {"s": "DJ:DJI", "d": "Dow 30"},
+                {"s": "XETR:DAX", "d": "DAX"},
+                {"s": "LSE:UKX", "d": "FTSE 100"},
+                {"s": "HKEX:HSI", "d": "Hang Seng"},
+                {"s": "NIKKEI:N225", "d": "Nikkei 225"}
+              ],
+              "originalTitle": "Indices"
+            }
+          ]
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+    <div class="widget-section">
+        <h2>Commodities</h2>
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:400px; width:100%;">
+          <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px); width:100%;"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+          {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "en",
+          "largeChartUrl": "",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "showFloatingTooltip": false,
+          "width": "100%",
+          "height": "400",
+          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+          "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+          "gridLineColor": "rgba(240, 243, 250, 0)",
+          "scaleFontColor": "rgba(15, 15, 15, 1)",
+          "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+          "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+          "tabs": [
+            {
+              "title": "Commodities",
+              "symbols": [
+                {"s": "NYMEX:CL1!", "d": "Crude Oil (WTI)"},
+                {"s": "TVC:UKOIL", "d": "Brent Crude Oil"},
+                {"s": "COMEX:GC1!", "d": "Gold"},
+                {"s": "COMEX:HG1!", "d": "Copper"},
+                {"s": "NYMEX:NG1!", "d": "Natural Gas"},
+                {"s": "CBOT:ZC1!", "d": "Corn"}
+              ],
+              "originalTitle": "Commodities"
+            }
+          ]
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+     <div class="widget-section">
+        <h2>Sentiment / Volatility</h2>
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:400px; width:100%;">
+          <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px); width:100%;"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+          {
+          "colorTheme": "light",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "en",
+          "largeChartUrl": "",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "showFloatingTooltip": false,
+          "width": "100%",
+          "height": "400",
+          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+          "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+          "gridLineColor": "rgba(240, 243, 250, 0)",
+          "scaleFontColor": "rgba(15, 15, 15, 1)",
+          "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+          "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+          "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+          "tabs": [
+            {
+              "title": "Sentiment/Volatility",
+              "symbols": [
+                {"s": "CBOE:VIX", "d": "VIX"},
+                {"s": "TVC:MOVE", "d": "MOVE Index"}
+              ],
+              "originalTitle": "Sentiment"
+            }
+          ]
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+</body>
+</html>

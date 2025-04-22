@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Guide to Economic Indicators and Macro Analysis</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; }
+        h1, h2, h3 { color: #333; }
+        h2 { border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 30px; }
+        h3 { margin-top: 25px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        code { background-color: #f9f9f9; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+        .importance { font-weight: bold; }
+        .note { font-style: italic; color: #555; margin-top: 5px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { margin-top: 10px; }
+        li { margin-bottom: 5px; }
+        .navigation { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .navigation a { margin-right: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="navigation">
+        <a href="macro-analysis-guide-zh.html">Switch to Chinese (切换中文)</a> |
+        <a href="../index.html">Back to Home</a>
+    </div>
+
+    <h1>Comprehensive Guide to Economic Indicators and Macro Analysis</h1>
+
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Understanding the economic landscape is crucial for navigating financial markets. This guide provides a comprehensive overview of key economic indicators and a framework for analyzing global macro trends. By combining insights from traditional economic data with real-time market signals, investors can develop a more robust understanding of market dynamics, anticipate shifts, and make informed decisions.</p>
+        <p>We will cover:</p>
+        <ul>
+            <li>Traditional Economic Indicators (Leading, Lagging, Coincident)</li>
+            <li>The Global Macro Five Puzzles Framework (FX, Rates, Equity, Commodities, Sentiment)</li>
+            <li>Integrating Scheduled Macroeconomic Data</li>
+            <li>Practical Application of these Frameworks</li>
+        </ul>
+        <p><strong><a href="tradingview-dashboard.html">View Live Market Dashboard &raquo;</a></strong></p>
+    </section>
+
+    <section id="economic-indicators">
+        <h2>Section 1: Economic Indicators (Leading, Lagging, Coincident)</h2>
+        <p>Economic indicators are statistics used to measure the health and direction of an economy. They are typically categorized into three types based on their timing relative to the overall economic cycle.</p>
+
+        <h3>1.1 Leading Indicators (领先指标)</h3>
+        <p>These indicators change <em>before</em> the economy starts to follow a particular pattern. They are used to predict future economic activity.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicator</th>
+                    <th>Why It Leads</th>
+                    <th>What to Watch</th>
+                    <th>Primary Data Source(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Stock Market</td>
+                    <td>Investors react to expected future earnings and economic conditions; stock prices move ahead of the real economy.</td>
+                    <td>Broad indices like S&P 500 (<code>SPX</code>), Wilshire 5000, or Russell 3000. Avoid relying on a single stock.</td>
+                    <td>Stock Exchanges (e.g., NYSE, Nasdaq)</td>
+                </tr>
+                <tr>
+                    <td>Housing Starts / Building Permits</td>
+                    <td>Builders act based on demand forecasts; increased permits signal future construction activity and economic growth.</td>
+                    <td>New Private Housing Units Authorized by Building Permits (FRED: <code>PERMIT</code>)</td>
+                    <td><a href="https://www.census.gov/economic-indicators/" target="_blank">U.S. Census Bureau</a></td>
+                </tr>
+                <tr>
+                    <td>Interest Rate Spread (e.g., 10Y - 2Y Treasury)</td>
+                    <td>When short-term rates exceed long-term (yield curve inversion), it's often a recession signal. Investors expect a slowdown, demanding less compensation for holding long-term debt.</td>
+                    <td>10-Year Treasury Minus 2-Year Treasury spread (FRED: <code>T10Y2Y</code>). Also 10Y-3M (FRED: <code>T10Y3M</code>).</td>
+                    <td><a href="https://fred.stlouisfed.org/" target="_blank">FRED (Federal Reserve Economic Data)</a></td>
+                </tr>
+                 <tr>
+                    <td>Consumer Expectations / Sentiment</td>
+                    <td>Surveys capture sentiment and future spending plans, which drives future consumption and business activity.</td>
+                    <td>University of Michigan Consumer Sentiment Index (FRED: <code>UMCSENT</code>) or Conference Board Consumer Confidence Index (Expectations component).</td>
+                    <td>University of Michigan, The Conference Board</td>
+                </tr>
+                <tr>
+                    <td>Retail Sales (Adjusted)</td>
+                    <td>Retailers see sales change before factories do. A dip signals future slowdown; a rise can indicate coming growth. (Note: Sometimes considered Coincident, but Advance Retail Sales can lead).</td>
+                    <td>Advance Retail Sales (FRED: <code>RSAFS</code>)</td>
+                    <td><a href="https://www.census.gov/economic-indicators/" target="_blank">U.S. Census Bureau</a></td>
+                </tr>
+                <tr>
+                    <td>Manufacturing New Orders</td>
+                    <td>Orders are a precursor to production. More orders today = more factory activity tomorrow.</td>
+                    <td>ISM Manufacturing New Orders Index (Part of PMI report) or Durable Goods New Orders (FRED: <code>DGORDER</code>).</td>
+                    <td><a href="https://www.ismworld.org/" target="_blank">Institute for Supply Management (ISM)</a>, U.S. Census Bureau</td>
+                </tr>
+                <tr>
+                    <td>Average Weekly Hours (Manufacturing)</td>
+                    <td>Employers cut hours before cutting jobs, so a reduction can signal a weakening economy.</td>
+                    <td>Average Weekly Hours of Production and Nonsupervisory Employees: Manufacturing (FRED: <code>AWHAEMAN</code>)</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">U.S. Bureau of Labor Statistics (BLS)</a></td>
+                </tr>
+                <tr>
+                    <td>Initial Jobless Claims (Weekly)</td>
+                    <td>An early sign of layoffs and labor market stress. A spike is an early warning of downturns. Look at the 4-week moving average to smooth volatility.</td>
+                    <td>Initial Claims (FRED: <code>ICSA</code>), 4-Week Moving Average (FRED: <code>IC4WSA</code>)</td>
+                    <td><a href="https://www.dol.gov/" target="_blank">U.S. Department of Labor (DOL)</a></td>
+                </tr>
+                 <tr>
+                    <td>ISM Manufacturing PMI</td>
+                    <td>Purchasing Managers' Index reflects manufacturing activity. New Orders component is particularly leading.</td>
+                    <td>Index level (FRED: <code>NAPM</code>). >50 indicates expansion, <50 indicates contraction.</td>
+                    <td><a href="https://www.ismworld.org/" target="_blank">Institute for Supply Management (ISM)</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.2 Coincident Indicators (同步指标)</h3>
+        <p>These indicators move at roughly the <em>same time</em> as the overall economy. They provide a snapshot of the current state of economic activity.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicator</th>
+                    <th>Why It Coincides</th>
+                    <th>What to Watch</th>
+                    <th>Primary Data Source(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Industrial Production Index</td>
+                    <td>Measures the real output of factories, mines, and utilities — directly tied to current economic activity.</td>
+                    <td>Index level (FRED: <code>INDPRO</code>). Released monthly in Fed's G.17 report.</td>
+                    <td><a href="https://www.federalreserve.gov/" target="_blank">Federal Reserve Board</a></td>
+                </tr>
+                <tr>
+                    <td>Aggregate Real Personal Income (excluding transfer payments)</td>
+                    <td>Total income earned from production (adjusted for inflation) reflects current consumer buying power and economic strength. Excluding transfers gives a clearer picture of underlying economic health.</td>
+                    <td>Real Personal Income Excluding Transfer Receipts (FRED: <code>W875RX1</code>)</td>
+                    <td><a href="https://www.bea.gov/" target="_blank">U.S. Bureau of Economic Analysis (BEA)</a></td>
+                </tr>
+                <tr>
+                    <td>Manufacturing and Trade Sales</td>
+                    <td>Combines shipments, sales, and revenues from manufacturers, wholesalers, and retailers — a strong real-time signal of business activity.</td>
+                    <td>Total Business Sales (FRED: <code>TOTALSL</code>)</td>
+                    <td><a href="https://www.census.gov/economic-indicators/" target="_blank">U.S. Census Bureau</a></td>
+                </tr>
+                <tr>
+                    <td>Non-agricultural Employment (Nonfarm Payrolls)</td>
+                    <td>The number of jobs added or lost is one of the best single indicators of current economic health.</td>
+                    <td>Total Nonfarm Payrolls (FRED: <code>PAYEMS</code>). Released monthly by BLS.</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">U.S. Bureau of Labor Statistics (BLS)</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.3 Lagging Indicators (滞后指标)</h3>
+        <p>These indicators change <em>after</em> the economy has already begun to follow a particular pattern. They are used to confirm long-term trends or shifts that have already occurred.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicator</th>
+                    <th>Why It Lags</th>
+                    <th>What to Watch</th>
+                    <th>Primary Data Source(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Average Duration of Unemployment</td>
+                    <td>It takes time for layoffs to fully manifest in how long people remain unemployed. This rises well into a recovery.</td>
+                    <td>Average (Mean) Duration of Unemployment (FRED: <code>UEMPMEAN</code>). From BLS Table A-12.</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">U.S. Bureau of Labor Statistics (BLS)</a></td>
+                </tr>
+                <tr>
+                    <td>Inflation (CPI / PCE)</td>
+                    <td>Prices tend to rise after economic growth picks up and demand increases, or fall after a slowdown. Core measures lag even more.</td>
+                    <td>Consumer Price Index (CPI) (FRED: <code>CPIAUCSL</code>), Personal Consumption Expenditures (PCE) Price Index (FRED: <code>PCEPI</code>). Core versions exclude food & energy.</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">BLS</a>, <a href="https://www.bea.gov/" target="_blank">BEA</a></td>
+                </tr>
+                <tr>
+                    <td>Inventory-to-Sales Ratio</td>
+                    <td>Businesses adjust inventory levels in response to unexpected changes in demand *after* those changes occur. A rising ratio can signal slowing sales.</td>
+                    <td>Total Business Inventories to Sales Ratio (FRED: <code>ISRATIO</code>)</td>
+                    <td><a href="https://www.census.gov/economic-indicators/" target="_blank">U.S. Census Bureau</a></td>
+                </tr>
+                <tr>
+                    <td>Unit Labor Costs</td>
+                    <td>Changes in labor costs per unit of output often get passed through to prices later, lagging behind productivity and wage changes.</td>
+                    <td>Nonfarm Business Sector: Unit Labor Costs (FRED: <code>ULCNFB</code>)</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">U.S. Bureau of Labor Statistics (BLS)</a></td>
+                </tr>
+                <tr>
+                    <td>Prime Lending Rate</td>
+                    <td>Banks typically adjust their prime lending rate after the Federal Reserve changes its target policy rate.</td>
+                    <td>Bank Prime Loan Rate (FRED: <code>DPRIME</code>)</td>
+                    <td><a href="https://www.federalreserve.gov/" target="_blank">Federal Reserve Board</a></td>
+                </tr>
+                <tr>
+                    <td>Consumer Debt-to-Income Ratio</td>
+                    <td>Reflects past borrowing behavior relative to income, changing slowly after income or borrowing patterns shift.</td>
+                    <td>Household Debt Service Ratio (FRED: <code>TDSP</code>), Financial Obligations Ratio (FRED: <code>FODSP</code>)</td>
+                    <td><a href="https://www.federalreserve.gov/" target="_blank">Federal Reserve Board</a>, NY Fed Consumer Credit Panel</td>
+                </tr>
+                <tr>
+                    <td>Commercial & Industrial Loans Outstanding</td>
+                    <td>Business borrowing typically expands only after economic confidence is restored and activity picks up.</td>
+                    <td>Commercial and Industrial Loans, All Commercial Banks (FRED: <code>BUSLOANS</code>)</td>
+                    <td><a href="https://www.federalreserve.gov/" target="_blank">Federal Reserve Board</a></td>
+                </tr>
+                 <tr>
+                    <td>Unemployment Rate (U-3)</td>
+                    <td>While Nonfarm Payrolls are coincident, the overall unemployment rate often peaks after a recession has technically ended.</td>
+                    <td>Unemployment Rate (FRED: <code>UNRATE</code>)</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">U.S. Bureau of Labor Statistics (BLS)</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.4 Most Trusted U.S. Data Sources</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Source</th>
+                    <th>Link</th>
+                    <th>What It’s Good For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FRED (Federal Reserve Economic Data)</td>
+                    <td><a href="https://fred.stlouisfed.org/" target="_blank">fred.stlouisfed.org</a></td>
+                    <td>Excellent charting tool, aggregates data from many sources (BLS, BEA, Census, Fed, etc.). Provides easy access to time series codes.</td>
+                </tr>
+                <tr>
+                    <td>BLS (Bureau of Labor Statistics)</td>
+                    <td><a href="https://www.bls.gov/" target="_blank">bls.gov</a></td>
+                    <td>Jobs reports (NFP, Unemployment Rate), wages, inflation (CPI), productivity, labor costs.</td>
+                </tr>
+                <tr>
+                    <td>Census Bureau</td>
+                    <td><a href="https://www.census.gov/economic-indicators/" target="_blank">census.gov</a></td>
+                    <td>Retail sales, building permits, housing starts, manufacturing orders, trade sales, inventories.</td>
+                </tr>
+                <tr>
+                    <td>BEA (Bureau of Economic Analysis)</td>
+                    <td><a href="https://www.bea.gov/" target="_blank">bea.gov</a></td>
+                    <td>GDP, personal income & spending, inflation (PCE - Fed's preferred measure), corporate profits.</td>
+                </tr>
+                <tr>
+                    <td>Federal Reserve Board</td>
+                    <td><a href="https://www.federalreserve.gov/" target="_blank">federalreserve.gov</a></td>
+                    <td>Interest rates (policy & market), credit data, industrial production, financial accounts (debt levels), monetary policy statements & minutes.</td>
+                </tr>
+                 <tr>
+                    <td>ISM (Institute for Supply Management)</td>
+                    <td><a href="https://www.ismworld.org/" target="_blank">ismworld.org</a></td>
+                    <td>Manufacturing and Services PMI reports (highly watched leading indicators).</td>
+                </tr>
+                 <tr>
+                    <td>The Conference Board</td>
+                    <td><a href="https://www.conference-board.org/" target="_blank">conference-board.org</a></td>
+                    <td>Consumer Confidence Index, Leading Economic Index (LEI).</td>
+                </tr>
+                 <tr>
+                    <td>University of Michigan</td>
+                    <td><a href="https://data.sca.isr.umich.edu/" target="_blank">data.sca.isr.umich.edu</a></td>
+                    <td>Consumer Sentiment Index.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="five-puzzles">
+        <h2>Section 2: The Global Macro Five Puzzles Framework</h2>
+        <p>Beyond scheduled economic data, real-time financial market prices offer crucial insights into current expectations, risk appetite, and capital flows. The "Five Puzzles" framework helps organize this analysis by looking at key interlinked markets: Foreign Exchange (FX), Interest Rates, Equity Indices, Commodities, and Sentiment/Volatility.</p>
+        <p><strong>Core Idea:</strong> Start by analyzing FX and Rates (the pricing anchors), then check if Equity and Commodity markets align. Consistency suggests a healthy trend; divergence signals a potential warning or shift in narrative.</p>
+
+        <h3>2.1 Foreign Exchange (FX)</h3>
+        <p><strong>Definition & Role:</strong> FX rates represent the relative value of currencies. They reflect economic strength, interest rate differentials, capital flows, and risk sentiment. The US Dollar (USD) is the global reserve currency, making its strength or weakness a key driver for many assets.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code/Pair</th>
+                    <th>Explanation & Importance</th>
+                    <th>Typical Thresholds/Interpretations*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>DXY</code> (USD Index)</td>
+                    <td>Measures USD strength against a basket of 6 major currencies (EUR, JPY, GBP, CAD, SEK, CHF). EUR has ~57% weight. DXY is a proxy for overall USD strength/weakness.</td>
+                    <td>Around 100 is a neutral reference. Above 105/106 often signals strong USD pressure (capital flowing to US, non-USD assets may fall). Below 95 suggests broad USD weakness.</td>
+                </tr>
+                <tr>
+                    <td><code>EURUSD</code></td>
+                    <td>Euro vs USD. Largest traded pair, heavily influences DXY. Strong EUR = Weak USD.</td>
+                    <td>1.00 (parity) is a major psychological level. Above 1.10 often seen with weaker DXY. Below 0.95 signals significant USD strength.</td>
+                </tr>
+                <tr>
+                    <td><code>GBPUSD</code></td>
+                    <td>British Pound vs USD. Influenced by UK inflation/BOE policy and USD trends. Often moves directionally with EURUSD but can have higher volatility due to UK-specific factors.</td>
+                    <td>1.20 and 1.25 are often watched levels.</td>
+                </tr>
+                <tr>
+                    <td><code>USDJPY</code></td>
+                    <td>USD vs Japanese Yen. Sensitive to US-Japan interest rate differentials and risk sentiment (JPY is a safe-haven currency).</td>
+                    <td>Above 150/160 historically triggered intervention concerns. Rising US yields often push USDJPY up (carry trade). Falling USDJPY despite stable yields can signal risk aversion (safe-haven JPY buying).</td>
+                </tr>
+                <tr>
+                    <td><code>USDCNH</code></td>
+                    <td>USD vs Offshore Chinese Yuan. Reflects foreign investor sentiment towards China and capital flows.</td>
+                    <td>Above 7.3/7.4 often signals concerns about Chinese growth or potential easing, indicating capital outflows. Below 7.0 suggests stronger sentiment.</td>
+                </tr>
+                 <tr>
+                    <td><code>USDKRW</code></td>
+                    <td>USD vs South Korean Won. Often seen as a barometer for Asian risk due to Korea's export dependence and foreign debt.</td>
+                    <td>Above 1400 has historically been associated with heightened Asian financial stress.</td>
+                </tr>
+                 <tr>
+                    <td><code>USDCHF</code></td>
+                    <td>USD vs Swiss Franc. CHF is another major safe-haven currency.</td>
+                    <td>No specific threshold, but falling USDCHF during market turmoil indicates safe-haven flows into CHF.</td>
+                </tr>
+                 <tr>
+                    <td>Commodity Currencies (<code>AUDUSD</code>, <code>USDCAD</code>, <code>NZDUSD</code>)</td>
+                    <td>Australian Dollar, Canadian Dollar, New Zealand Dollar vs USD. Sensitive to global growth outlook and commodity prices (metals, oil). Tend to strengthen during risk-on periods and weaken during risk-off.</td>
+                    <td>Watch correlations with key commodity prices (e.g., AUD with iron ore/copper, CAD with oil).</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">*Thresholds are historical reference points where policy intervention or market turns have occurred; they are not magic numbers. Always watch for news and central bank actions when approaching these levels.</p>
+        <p><strong>Combination Reading Tip:</strong></p>
+        <ul>
+            <li><code>DXY</code>↓ + <code>EURUSD</code>↑ + <code>USDJPY</code>↓ = Broad USD weakness, possibly driven by falling US yields or rising risk appetite/safe-haven flows into JPY. Check Rates/Equity to confirm.</li>
+            <li><code>DXY</code>↑ but <code>EURUSD</code>↓ slightly while <code>USDJPY</code>↑ significantly = Market likely trading interest rate differentials (carry trade). Check if US10Y is rising sharply.</li>
+        </ul>
+
+        <h3>2.2 Interest Rates (Rates)</h3>
+        <p><strong>Definition & Role:</strong> Market interest rates, primarily government bond yields, reflect the cost of capital, inflation expectations, and central bank policy stances. They are the bedrock for asset valuation.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code/Rate</th>
+                    <th>Key Focus</th>
+                    <th>Quick Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>US10Y</code> (US 10-Year Treasury Yield)</td>
+                    <td>Global benchmark risk-free rate. Reflects long-term growth and inflation expectations. Key discount rate for global assets.</td>
+                    <td>> 4.5% often seen as restrictive, negative for growth stocks, positive for banks. Sharp fall suggests risk aversion or recession fears.</td>
+                </tr>
+                <tr>
+                    <td><code>US02Y</code> (US 2-Year Treasury Yield)</td>
+                    <td>Reflects near-term Fed policy expectations. Highly sensitive to rate hike/cut signals.</td>
+                    <td>Rising sharply = market pricing in hikes. Falling sharply = market pricing in cuts. Compare to Fed Funds Rate target.</td>
+                </tr>
+                <tr>
+                    <td><code>DE10Y</code> (German 10-Year Bund Yield)</td>
+                    <td>Eurozone benchmark rate. Often follows US10Y but reflects ECB policy and Eurozone specifics.</td>
+                    <td>Watch spread vs US10Y (influences EURUSD). Can fall independently during Eurozone crises.</td>
+                </tr>
+                <tr>
+                    <td><code>JP10Y</code> (Japanese 10-Year JGB Yield)</td>
+                    <td>Historically capped by Bank of Japan's Yield Curve Control (YCC) policy (limit often adjusted, e.g., 1%).</td>
+                    <td>Breaching the YCC cap signals market pressure on BOJ to tighten, potentially leading to sharp JPY appreciation.</td>
+                </tr>
+                <tr>
+                    <td><code>CN10Y</code> (Chinese 10-Year Gov Bond Yield)</td>
+                    <td>Reflects domestic liquidity conditions and PBoC policy stance in China.</td>
+                    <td>Consistently falling yields suggest easing bias, potentially positive for Chinese growth stocks.</td>
+                </tr>
+                <tr>
+                    <td>Yield Curve Spreads (<code>T10Y2Y</code>, <code>T10Y3M</code>)</td>
+                    <td>Difference between long-term and short-term yields. Shape indicates market view on future growth/policy.</td>
+                    <td>Inversion (negative spread) is a strong historical predictor of recession. Steepening can signal recovery or inflation.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Key Linkage Formulas:</strong></p>
+        <ul>
+            <li><code>US10Y</code>↑ + <code>DXY</code>↑ = Global tightening/inflation fears = Reduce risk asset exposure first.</li>
+            <li><code>US10Y</code>↓ + <code>DXY</code>↑ = Risk aversion rising (flight to USD cash/Treasuries) = Protect capital.</li>
+            <li><code>US10Y</code>↓ + <code>DXY</code>↓ = Fed turning dovish/recession confirmed = Look for opportunities in tech, gold.</li>
+        </ul>
+
+        <h3>2.3 Equity Indices (Equity)</h3>
+
+        <p><strong>Definition & Role:</strong> Stock market indices track the performance of a basket of stocks, serving as a barometer for corporate health, economic expectations, and overall risk appetite.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code/Index</th>
+                    <th>Represents</th>
+                    <th>Interpretation Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>SPX</code> (S&P 500)</td>
+                    <td>Broad US large-cap market. Global benchmark for risk assets.</td>
+                    <td>Trend direction indicates overall market sentiment. Watch key technical levels (support/resistance, moving averages).</td>
+                </tr>
+                <tr>
+                    <td><code>NDX</code> (Nasdaq 100)</td>
+                    <td>US large-cap tech/growth stocks. Sensitive to interest rates and risk appetite.</td>
+                    <td>Outperformance signals risk-on; underperformance signals risk-off or rising rate concerns.</td>
+                </tr>
+                 <tr>
+                    <td><code>DJI</code> (Dow Jones Industrial Average)</td>
+                    <td>30 large US blue-chip companies, more weighted towards industrial/value sectors.</td>
+                    <td>Compare performance vs SPX/NDX for sector rotation insights.</td>
+                </tr>
+                <tr>
+                    <td><code>DAX</code> (German DAX)</td>
+                    <td>Major German stocks. Proxy for Eurozone industrial health.</td>
+                    <td>Sensitive to global trade, EUR strength (strong EUR can hurt exporters).</td>
+                </tr>
+                 <tr>
+                    <td><code>UKX</code> (FTSE 100)</td>
+                    <td>Major UK stocks. Influenced by global factors but also UK specifics (Brexit, domestic policy).</td>
+                    <td>Often has significant exposure to energy and materials sectors.</td>
+                </tr>
+                <tr>
+                    <td><code>HSI</code> (Hang Seng Index)</td>
+                    <td>Major Hong Kong stocks, heavily influenced by mainland China sentiment and policies.</td>
+                    <td>Often viewed as a proxy for international investor sentiment towards China.</td>
+                </tr>
+                 <tr>
+                    <td><code>N225</code> (Nikkei 225)</td>
+                    <td>Major Japanese stocks. Sensitive to JPY strength (strong JPY hurts exporters) and BOJ policy.</td>
+                    <td>Often negatively correlated with USDJPY (JPY weakens -> Nikkei rises).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.4 Commodities</h3>
+
+        <p><strong>Definition & Role:</strong> Prices of raw materials like energy, metals, and agricultural products. They reflect physical supply/demand dynamics, influence inflation, and signal global industrial activity.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code/Commodity</th>
+                    <th>Why It Matters</th>
+                    <th>Typical Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>CL1!</code> / <code>WTI Crude Oil</code></td>
+                    <td>Primary energy source, impacts transportation and industrial costs. Highly sensitive to geopolitics.</td>
+                    <td>Rising prices fuel inflation, potentially forcing central banks to be more hawkish. Falling prices can signal weak demand/recession fears.</td>
+                </tr>
+                 <tr>
+                    <td><code>BRN1!</code> / <code>Brent Crude Oil</code></td>
+                    <td>International oil benchmark, especially relevant for Europe/sea transport.</td>
+                    <td>Watch spread vs WTI for regional supply/demand imbalances or transport bottlenecks.</td>
+                </tr>
+                <tr>
+                    <td><code>GC1!</code> / <code>Gold</code></td>
+                    <td>Traditional safe-haven asset, inflation hedge, store of value ("zero-credit-risk asset").</td>
+                    <td>Rises on falling real interest rates or heightened risk aversion. Often negatively correlated with USD.</td>
+                </tr>
+                <tr>
+                    <td><code>HG1!</code> / <code>Copper</code></td>
+                    <td>"Dr. Copper" - widely used industrial metal, proxy for global manufacturing and construction activity.</td>
+                    <td>Sustained price decline signals slowing demand/economic cooling. Price rise indicates robust industrial activity.</td>
+                </tr>
+                 <tr>
+                    <td><code>NG1!</code> / <code>Natural Gas</code></td>
+                    <td>Key energy source, especially for heating and power generation. Prices can be highly volatile due to weather and geopolitics (e.g., Europe/Russia).</td>
+                    <td>Price spikes can trigger secondary inflation shocks, particularly in regions dependent on imports.</td>
+                </tr>
+                 <tr>
+                    <td>Grains (Corn <code>ZC1!</code>, Soybeans <code>ZS1!</code>, Wheat <code>ZW1!</code>)</td>
+                    <td>Major global food staples. Prices affected by weather, geopolitics (e.g., Black Sea conflict), and demand.</td>
+                    <td>Rising grain prices contribute to food inflation, impacting consumers and potentially leading to social/policy pressure.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.5 Sentiment / Volatility</h3>
+
+        <p><strong>Definition & Role:</strong> Measures of market fear, greed, or uncertainty, often derived from options markets or surveys. They act as a "temperature gauge" for risk appetite.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Code/Indicator</th>
+                    <th>Measures</th>
+                    <th>Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>VIX</code> (CBOE Volatility Index)</td>
+                    <td>Implied volatility of S&P 500 options over the next 30 days. The "Fear Gauge".</td>
+                    <td>Low (<15-20) = Complacency/calm. High (>30) = Fear/uncertainty. Spikes often coincide with market sell-offs. Extreme highs can signal capitulation.</td>
+                </tr>
+                <tr>
+                    <td><code>MOVE</code> (Merrill Lynch Option Volatility Estimate)</td>
+                    <td>Implied volatility of US Treasury options. Measures bond market uncertainty.</td>
+                    <td>High MOVE indicates stress in the rates market, which can spill over into other assets.</td>
+                </tr>
+                 <tr>
+                    <td>Put/Call Ratio</td>
+                    <td>Ratio of traded put options (betting on price decline) to call options (betting on price rise).</td>
+                    <td>High ratio (>1) suggests bearish sentiment/hedging. Low ratio (<0.7) suggests bullish sentiment. Extreme readings can be contrarian signals.</td>
+                </tr>
+                 <tr>
+                    <td>CNN Fear & Greed Index</td>
+                    <td>Composite index (0-100) combining multiple sentiment indicators (market momentum, volatility, options, junk bond demand, etc.).</td>
+                    <td>Low readings (<25) = Extreme Fear. High readings (>75) = Extreme Greed. Often used as a contrarian indicator at extremes.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.6 The "Three Axe" Process for Combining Puzzles</h3>
+        <ol>
+            <li><strong>Anchor with USD & Rates:</strong> First, check DXY and US10Y/US02Y.
+                <ul>
+                    <li>Both Rising → Tightening/Inflation fears → Default to risk-off stance.</li>
+                    <li>Both Falling → Easing/Recession fears → Look for safe-haven or policy beneficiary trades (e.g., gold, tech).</li>
+                    <li>Diverging → More complex; e.g., Rates↓ + DXY↑ = Strong risk aversion (flight to quality USD).</li>
+                </ul>
+            </li>
+            <li><strong>Verify with Equity & Commodities:</strong> Do stock indices and key commodities confirm the signal from Rates/FX?
+                <ul>
+                    <li>Example: If DXY↑ but SPX also ↑ → Market might interpret strong USD as "US exceptionalism", attracting flows to US stocks.</li>
+                    <li>Example: If DXY↑ and WTI↓ + Copper↓ → Confirms weakening demand, reinforcing economic slowdown fears.</li>
+                </ul>
+            </li>
+            <li><strong>Check the Temperature with VIX / USDJPY:</strong> Assess the level of fear/complacency.
+                <ul>
+                    <li>VIX > 20 or USDJPY falling sharply → Risk aversion is elevated, protect positions.</li>
+                    <li>VIX < 15 and a "WDJ" scenario (Weak Dollar + strong Equities + strong Oil) → Risk-on environment, consider adding exposure.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>2.7 Quick Reference: Scenarios & Signals</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>FX Signal (Typical)</th>
+                    <th>Rates Signal</th>
+                    <th>Equity Signal</th>
+                    <th>Commodity Signal</th>
+                    <th>Likely Action/Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Global Tightening / Inflation Fear</td>
+                    <td><code>DXY</code>↑, <code>USDJPY</code>↑</td>
+                    <td><code>US10Y</code>↑, <code>US02Y</code>↑</td>
+                    <td><code>SPX</code>↓, <code>NDX</code>↓↓</td>
+                    <td><code>WTI</code>↓ (demand fear) or ↑ (inflation source), <code>Gold</code>↓</td>
+                    <td>Reduce growth exposure; hold cash or short-duration bonds.</td>
+                </tr>
+                <tr>
+                    <td>Risk Aversion / Shock</td>
+                    <td><code>DXY</code>↑, <code>USDJPY</code>↓</td>
+                    <td><code>US10Y</code>↓, Curve flattens/inverts</td>
+                    <td><code>SPX</code>↓, <code>VIX</code>↑↑</td>
+                    <td><code>Gold</code>↑, <code>Oil</code>↓ (demand fear)</td>
+                    <td>Short equity indices; buy safe havens (Treasuries, JPY, Gold).</td>
+                </tr>
+                <tr>
+                    <td>Easing Expectations / Recovery Hopes</td>
+                    <td><code>DXY</code>↓, <code>EURUSD</code>↑</td>
+                    <td><code>US10Y</code>↓ or stable, <code>US02Y</code>↓↓</td>
+                    <td><code>SPX</code>↑, <code>NDX</code>↑↑</td>
+                    <td><code>Gold</code>↑, <code>Copper</code>↑</td>
+                    <td>Long tech/growth, emerging markets; short USD.</td>
+                </tr>
+                <tr>
+                    <td>Reflation / Strong Growth</td>
+                    <td><code>DXY</code> stable or ↓, Commodity FX ↑</td>
+                    <td><code>US10Y</code>↑ (steepening curve)</td>
+                    <td>Value/Cyclicals ↑, <code>SPX</code>↑</td>
+                    <td><code>WTI</code>↑, <code>Copper</code>↑</td>
+                    <td>Long energy, materials, financials; be cautious on long-duration growth stocks.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+     <section id="macro-data-integration">
+        <h2>Section 3: Integrating Macroeconomic Data</h2>
+        <p>While the five puzzles provide real-time market pricing signals, scheduled macroeconomic data releases offer fundamental validation or contradiction of market narratives. Integrating these data points is crucial for a complete picture.</p>
+        <p><strong>Why Integrate?</strong> Financial markets price in expectations *before* data releases. The market reaction *to the data surprise* (actual vs. forecast) reveals how current positioning and narratives are adjusting. Data confirms or refutes the stories told by FX, Rates, Equity, Commodities, and Sentiment.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Indicator</th>
+                    <th>Typical Code (TradingView / FRED)</th>
+                    <th>Official Source</th>
+                    <th>Interpretation Notes</th>
+                    <th class="importance">Importance★</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="5">**Leading (Predictive)**</td>
+                    <td>ISM Manufacturing PMI</td>
+                    <td><code>ECONOMICS:USNAPM</code> / <code>NAPM</code></td>
+                    <td>ISM</td>
+                    <td>>50 expansion, <50 contraction; New Orders sub-index is key.</td>
+                    <td class="importance">★★★★</td>
+                </tr>
+                <tr>
+                    <td>ISM Services PMI</td>
+                    <td><code>ECONOMICS:USNPMI</code> / <code>NMFBAI</code></td>
+                    <td>ISM</td>
+                    <td>Reflects the larger part of the US economy; Business Activity & New Orders are key.</td>
+                    <td class="importance">★★★</td>
+                </tr>
+                <tr>
+                    <td>Housing Starts</td>
+                    <td><code>ECONOMICS:USHSTA</code> / <code>HOUST</code></td>
+                    <td>Census</td>
+                    <td>Interest-rate sensitive; leading indicator for construction and related spending.</td>
+                    <td class="importance">★★★</td>
+                </tr>
+                <tr>
+                    <td>Initial Jobless Claims (Weekly)</td>
+                    <td><code>ECONOMICS:USIJC</code> / <code>ICSA</code></td>
+                    <td>DOL</td>
+                    <td>High frequency labor market signal; 4-week average trend is important. Rising trend signals weakening labor market.</td>
+                    <td class="importance">★★★★</td>
+                </tr>
+                <tr>
+                    <td>U. of Michigan Consumer Sentiment</td>
+                    <td><code>ECONOMICS:UMICHMCSI</code> / <code>UMCSENT</code></td>
+                    <td>U. Mich</td>
+                    <td>Forward-looking component (Expectations) is most relevant for future spending.</td>
+                    <td class="importance">★★</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">**Coincident (Current State)**</td>
+                    <td>Nonfarm Payrolls (NFP)</td>
+                    <td><code>ECONOMICS:NFP T</code> / <code>PAYEMS</code></td>
+                    <td>BLS</td>
+                    <td>Headline job growth number. Market mover. >200k strong, <100k weak (pre-pandemic norms). Revisions matter.</td>
+                    <td class="importance">★★★★★</td>
+                </tr>
+                 <tr>
+                    <td>Retail Sales (Monthly % Change)</td>
+                    <td><code>ECONOMICS:USRSL</code> / <code>RSAFS</code></td>
+                    <td>Census</td>
+                    <td>Measures consumer spending strength. Control group (ex-autos, gas, building materials) feeds into GDP.</td>
+                    <td class="importance">★★★</td>
+                </tr>
+                 <tr>
+                    <td>Industrial Production (Monthly % Change)</td>
+                    <td><code>ECONOMICS:IP M</code> / <code>INDPRO</code></td>
+                    <td>Fed</td>
+                    <td>Tracks manufacturing, mining, utility output. Reflects goods sector health.</td>
+                    <td class="importance">★★★</td>
+                </tr>
+                 <tr>
+                    <td>Capacity Utilization</td>
+                    <td><code>ECONOMICS:CAPUTL</code> / <code>TCU</code></td>
+                    <td>Fed</td>
+                    <td>Measures industrial slack/tightness. High utilization can signal inflationary pressure.</td>
+                    <td class="importance">★★</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">**Lagging (Confirmatory)**</td>
+                    <td>CPI (YoY % Change)</td>
+                    <td><code>ECONOMICS:USCPIALLMINMEI</code> / <code>CPIAUCSL</code></td>
+                    <td>BLS</td>
+                    <td>Headline inflation measure. Core CPI (ex-food & energy, FRED: <code>CPILFESL</code>) and MoM changes are closely watched by Fed/market.</td>
+                    <td class="importance">★★★★★</td>
+                </tr>
+                <tr>
+                    <td>Core PCE (YoY % Change)</td>
+                    <td><code>ECONOMICS:USPCEILFE</code> / <code>PCEPILFE</code></td>
+                    <td>BEA</td>
+                    <td>Fed's preferred inflation gauge. Target is 2%. Released later than CPI.</td>
+                    <td class="importance">★★★★★</td>
+                </tr>
+                <tr>
+                    <td>GDP (QoQ % Change, SAAR)</td>
+                    <td><code>ECONOMICS:GDP CQOQ</code> / <code>GDPC1</code></td>
+                    <td>BEA</td>
+                    <td>Broadest measure of economic activity. Lagging and subject to revisions, but confirms cycle turning points.</td>
+                    <td class="importance">★★★★</td>
+                </tr>
+                 <tr>
+                    <td>Unemployment Rate (U-3)</td>
+                    <td><code>ECONOMICS:USURTOT</code> / <code>UNRATE</code></td>
+                    <td>BLS</td>
+                    <td>Lagging indicator but politically sensitive. Rising trend confirms labor market weakness.</td>
+                    <td class="importance">★★★★</td>
+                </tr>
+                 <tr>
+                    <td rowspan="2">**Financial & Other**</td>
+                    <td>Yield Curve (10Y-3M Spread)</td>
+                    <td><code>ECONOMICS:T10Y3M</code> / <code>T10Y3M</code></td>
+                    <td>Fed/Treasury</td>
+                    <td>Reliable recession predictor when inverted for sustained period (3-6 months).</td>
+                    <td class="importance">★★★★</td>
+                </tr>
+                 <tr>
+                    <td>Case-Shiller Home Price Index (YoY % Change)</td>
+                    <td><code>ECONOMICS:SPCS20RSA</code> / <code>CSUSHPISA</code></td>
+                    <td>S&P/CoreLogic</td>
+                    <td>Lagging indicator of housing market health; reflects wealth effects.</td>
+                    <td class="importance">★★</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">Importance ★ rating is subjective and context-dependent but reflects typical market focus.</p>
+
+        <h3>Common Data Trigger → Market Reaction Chains</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Triggering Data</th>
+                    <th>Typical Immediate Reaction (if surprise)</th>
+                    <th>Potential Chain Reaction Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NFP Stronger than Expected</td>
+                    <td>US 2Y/10Y Yields ↑, DXY ↑</td>
+                    <td>→ Tech Stocks (NDX) ↓ (higher discount rate fear)<br>→ Gold ↓ (higher real yields, stronger USD)<br>→ Market prices in higher chance of Fed hike/delayed cut.</td>
+                </tr>
+                <tr>
+                    <td>Core CPI Cooler than Expected</td>
+                    <td>US 2Y/10Y Yields ↓, DXY ↓</td>
+                    <td>→ Gold ↑, Commodity Prices ↑ (weaker USD, lower real yields)<br>→ Growth Stocks (NDX) ↑ (lower discount rate)<br>→ VIX likely falls.</td>
+                </tr>
+                <tr>
+                    <td>ISM Manufacturing PMI falls below 50 / Weak New Orders</td>
+                    <td>US 10Y Yield ↓ (growth fears), Copper/Oil ↓ (demand fears)</td>
+                    <td>→ Commodity Currencies (AUD, CAD) ↓<br>→ Yield Curve may invert further or steepen (if Fed cut expectations rise faster)<br>→ Cyclical Stocks ↓, Defensive Stocks outperform.</td>
+                </tr>
+                <tr>
+                    <td>Initial Jobless Claims Trend Sharply Higher</td>
+                    <td>US 2Y Yield ↓ (Fed cut expectations rise)</td>
+                    <td>→ USDJPY ↓ (safe-haven JPY buying, lower US yields)<br>→ High Yield Bond Spreads may widen (recession risk)<br>→ Market sentiment shifts towards defensive positioning.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="application">
+        <h2>Section 4: How to Apply the Frameworks</h2>
+        <p>Understanding the indicators and frameworks is the first step. Applying them effectively involves synthesizing information from both scheduled data releases and real-time market prices.</p>
+
+        <h3>4.1 Rationale for Integration</h3>
+        <p>Why combine these approaches? Because neither tells the whole story alone:</p>
+        <ul>
+            <li><strong>Economic Data (Lagging/Infrequent):</strong> Provides the fundamental context – the actual state of growth, inflation, and employment. However, it's backward-looking and released with a delay. Markets often move *before* data confirms a trend.</li>
+            <li><strong>Market Prices (Real-Time):</strong> The "Five Puzzles" (FX, Rates, Equity, Commodities, Sentiment) reflect the collective wisdom (and biases) of market participants *right now*. They price in expectations, react instantly to news, and show where capital is flowing. However, prices can be driven by short-term sentiment or technical factors, sometimes diverging from fundamentals.</li>
+        </ul>
+        <p><strong>The Power of Synthesis:</strong> By combining both, you can:</p>
+        <ul>
+            <li><strong>Validate Narratives:</strong> Does the market action (e.g., rising bond yields) align with recent strong economic data?</li>
+            <li><strong>Identify Divergences:</strong> Is the market ignoring bad data (perhaps focusing on future policy easing)? Divergences often signal shifts in focus or potential mispricings.</li>
+            <li><strong>Anticipate Shifts:</strong> Leading indicators (both data like PMIs and market signals like yield curve inversion) can warn of cycle turns before lagging data confirms them.</li>
+            <li><strong>Gauge Conviction:</strong> How strongly does the market react to data surprises? A muted reaction might mean the news was already priced in or overshadowed by other factors.</li>
+        </ul>
+
+        <h3>4.2 Step-by-Step Application Guide</h3>
+        <ol>
+            <li>
+                <strong>Daily Baseline Check (Five Puzzles):</strong>
+                <ul>
+                    <li>Start each day by reviewing the key indicators within the five puzzles framework (DXY, US10Y, SPX, WTI, VIX, etc.).</li>
+                    <li>What is the prevailing theme? Risk-on (e.g., DXY↓, Rates stable/↓, SPX↑, Oil↑, VIX↓)? Risk-off (opposite)? Inflation focus (Rates↑, Commodities↑, Equity↓)?</li>
+                    <li>Check for internal consistency. Are FX and Rate movements logical? Are commodities confirming the growth outlook implied by equities?</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Monitor Economic Calendar:</strong>
+                <ul>
+                    <li>Know which key data points are being released today/this week (NFP, CPI, PMI, Fed meeting, etc.).</li>
+                    <li>Understand the consensus forecasts. The market reaction is driven by the *surprise* element (actual vs. forecast).</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Analyze Data Surprises & Market Reaction:</strong>
+                <ul>
+                    <li>When data is released, note the actual number, the forecast, and the deviation (the surprise).</li>
+                    <li>Immediately observe the reaction in the most sensitive markets: typically **US 2-Year Yields** (policy expectations) and **DXY** (global impact).</li>
+                    <li>Then check the broader reaction across **US 10-Year Yields**, **SPX/NDX**, **Gold/Oil**, and **VIX**.</li>
+                    <li>Does the reaction make sense based on the data's implication? (e.g., Stronger-than-expected jobs data should logically push yields and the dollar higher, potentially pressuring stocks).</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Spot Divergences & Ask Why:</strong>
+                <ul>
+                    <li>Did the market react counter-intuitively? (e.g., Bad economic data released, but stocks rallied strongly).</li>
+                    <li>Why might this happen?
+                        <ul>
+                            <li>Focus Shift: Maybe the market is now prioritizing potential central bank easing over current weak growth.</li>
+                            <li>Priced In: Perhaps the bad news was widely anticipated.</li>
+                            <li>Overriding Factor: Geopolitical news or a major policy announcement might be dominating sentiment.</li>
+                            <li>Positioning: Extreme market positioning could lead to counter-intuitive unwinds (e.g., short squeeze).</li>
+                        </ul>
+                    </li>
+                    <li>Divergences are often where the most valuable insights lie.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Leverage Leading Indicators:</strong>
+                <ul>
+                    <li>Pay close attention to trends in leading *economic* indicators (ISM New Orders, Jobless Claims, Building Permits) and leading *market* indicators (Yield Curve slope, Copper/Gold ratio, High Yield Spreads).</li>
+                    <li>Are they signaling a potential turn in the economic cycle that isn't yet reflected in lagging data like GDP or the unemployment rate?</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Gauge Sentiment Extremes:</strong>
+                <ul>
+                    <li>Check VIX levels, Put/Call ratios, and indices like the Fear & Greed Index.</li>
+                    <li>Is sentiment extremely fearful or greedy? Extreme readings can suggest the market is overextended in one direction, potentially setting up a reversal, even if the immediate data seems to support the current trend.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Refine Your Narrative:</strong>
+                <ul>
+                    <li>Continuously synthesize the incoming data and market price action. What is the dominant story the market is telling? Is it about inflation, growth, policy, or risk?</li>
+                    <li>Be prepared to update your narrative as new information emerges and market reactions evolve.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>4.3 Illustrative Examples</h3>
+        <ul>
+            <li><strong>Scenario 1: High CPI print, but Bond Yields (US10Y) Fall and Gold Rallies.</strong>
+                *Possible Interpretations:* The market might be looking past the current high inflation, believing it will force the central bank into aggressive hikes that ultimately cause a recession (growth fears dominate inflation fears). Alternatively, the inflation print might have been slightly lower than the *most* hawkish expectations, leading to a "relief" rally in bonds/gold. Check the 2-year yield reaction for policy clues and the yield curve shape.
+            </li>
+            <li><strong>Scenario 2: Weak Nonfarm Payrolls report, but the S&P 500 Rallies Sharply.</strong>
+                *Possible Interpretations:* "Bad news is good news." The market might interpret weak jobs data as increasing the likelihood of earlier/faster central bank rate cuts, outweighing the negative growth signal. Check if rate cut expectations (e.g., Fed Funds Futures) shifted significantly and if bond yields fell.
+            </li>
+             <li><strong>Scenario 3: Oil Prices Surge due to Geopolitical Supply Shock, but DXY Weakens.</strong>
+                *Possible Interpretations:* While higher oil prices are inflationary (which could support USD via higher rate expectations), the market might be more focused on the negative growth impact of the energy shock, leading to expectations of slower global growth and potentially easier monetary policy down the line, weakening the USD. Or, the geopolitical event might be seen as primarily impacting regions outside the US, leading to relative USD weakness. Check other safe-haven flows (JPY, CHF) and bond yields.
+            </li>
+        </ul>
+    </section>
+
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>Analyzing the global macro environment requires a multi-faceted approach. By systematically monitoring traditional economic indicators, understanding the real-time signals from the five key financial market puzzles, and integrating scheduled data releases, investors can build a more comprehensive and dynamic view of the forces shaping markets. This integrated framework helps in identifying prevailing narratives, spotting crucial divergences, anticipating potential shifts, and ultimately making more informed investment and trading decisions.</p>
+    </section>
+
+</body>
+</html>
