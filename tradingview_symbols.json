@@ -1,0 +1,44 @@
+{
+  "Forex": [
+    { "s": "INDEX:DXY", "d": "US Dollar Index" },
+    { "s": "FX:EURUSD", "d": "欧元/美元" },
+    { "s": "FX:GBPUSD", "d": "英镑/美元" },
+    { "s": "FX:USDJPY", "d": "美元/日元" },
+    { "s": "FX:USDCNH", "d": "美元/离岸人民币" },
+    { "s": "FX_IDC:USDKRW", "d": "美元/韩元" },
+    { "s": "FX:USDCHF", "d": "美元/瑞郎" },
+    { "s": "FX:USDHKD", "d": "美元/港元" }
+  ],
+  "Rates": [
+    { "s": "TVC:US10Y", "d": "US 10Y Treasury" },
+    { "s": "TVC:US02Y", "d": "US 2Y Treasury" },
+    { "s": "TVC:DE10Y", "d": "German 10Y Bund" },
+    { "s": "TVC:JP10Y", "d": "Japanese 10Y Bond" },
+    { "s": "TVC:CN10Y", "d": "Chinese 10Y Bond" },
+    { "s": "FRED:T10Y2Y", "d": "US 10Y-2Y Spread" },
+    { "s": "FRED:T10Y3M", "d": "US 10Y-3M Spread" }
+  ],
+  "Equity Indices": [
+    { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+    { "s": "FOREXCOM:NAS100", "d": "Nasdaq 100" },
+    { "s": "FOREXCOM:DJI", "d": "Dow 30" },
+    { "s": "XETR:DAX", "d": "DAX" },
+    { "s": "FXOPEN:UK100", "d": "FTSE 100" },
+    { "s": "FXOPEN:HSI", "d": "Hang Seng" },
+    { "s": "TOCOM:225E", "d": "Nikkei 225" }
+  ],
+  "Commodities": [
+    { "s": "TVC:USOIL", "d": "Crude Oil (WTI)" },
+    { "s": "TVC:UKOIL", "d": "Brent Crude Oil" },
+    { "s": "TVC:GOLD", "d": "Gold" },
+    { "s": "CAPITALCOM:COPPER", "d": "Copper" },
+    { "s": "OANDA:NATGASUSD", "d": "Natural Gas" },
+    { "s": "CAPITALCOM:CORN", "d": "Corn" },
+    { "s": "CAPITALCOM:SOYBEAN", "d": "Soybean CFD" },
+    { "s": "CAPITALCOM:WHEAT", "d": "Wheat CFD" }
+  ],
+  "Sentiment/Volatility": [
+    { "s": "CAPITALCOM:VIX", "d": "VIX" },
+    { "s": "TVC:MOVE", "d": "MOVE Index" }
+  ]
+}
