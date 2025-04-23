@@ -54,6 +54,22 @@
         .commodity-button:hover {
             background-color: #0056b3;
         }
+        .view-all-button {
+            display: block; /* Make it block level */
+            width: fit-content; /* Size to content */
+            margin: -10px auto 20px auto; /* Center below heading */
+            padding: 6px 15px;
+            background-color: #6c757d; /* Grey color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+        }
+         .view-all-button:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
@@ -115,6 +131,7 @@
             </div>
             <!-- TradingView Widget END -->
             <div class="commodity-buttons-container">
+                <button class="view-all-button" data-category="Forex" style="margin: 0 0 10px 0; width: 100%;">View All Forex Charts</button>
                 <button class="commodity-button" data-symbol="INDEX:DXY">US Dollar Index</button>
                 <button class="commodity-button" data-symbol="FX:EURUSD">欧元/美元</button>
                 <button class="commodity-button" data-symbol="FX:GBPUSD">英镑/美元</button>
@@ -176,6 +193,7 @@
             </div>
             <!-- TradingView Widget END -->
             <div class="commodity-buttons-container">
+                 <button class="view-all-button" data-category="Rates" style="margin: 0 0 10px 0; width: 100%;">View All Rates Charts</button>
                  <button class="commodity-button" data-symbol="TVC:US10Y">US 10Y Treasury</button>
                  <button class="commodity-button" data-symbol="TVC:US02Y">US 2Y Treasury</button>
                  <button class="commodity-button" data-symbol="TVC:DE10Y">German 10Y Bund</button>
@@ -236,6 +254,7 @@
             </div>
             <!-- TradingView Widget END -->
             <div class="commodity-buttons-container">
+                <button class="view-all-button" data-category="Equity Indices" style="margin: 0 0 10px 0; width: 100%;">View All Equity Index Charts</button>
                 <button class="commodity-button" data-symbol="FOREXCOM:SPXUSD">S&P 500</button>
                 <button class="commodity-button" data-symbol="FOREXCOM:NAS100">Nasdaq 100</button>
                 <button class="commodity-button" data-symbol="FOREXCOM:DJI">Dow 30</button>
@@ -298,6 +317,7 @@
             <!-- TradingView Widget END -->
 
             <div class="commodity-buttons-container">
+                <button class="view-all-button" data-category="Commodities" style="margin: 0 0 10px 0; width: 100%;">View All Commodity Charts</button>
                 <button class="commodity-button" data-symbol="TVC:USOIL">Crude Oil (WTI)</button>
                 <button class="commodity-button" data-symbol="TVC:UKOIL">Brent Crude Oil</button>
                 <button class="commodity-button" data-symbol="TVC:GOLD">Gold</button>
@@ -354,6 +374,7 @@
             </div>
             <!-- TradingView Widget END -->
             <div class="commodity-buttons-container">
+                 <button class="view-all-button" data-category="Sentiment/Volatility" style="margin: 0 0 10px 0; width: 100%;">View All Sentiment/Volatility Charts</button>
                  <button class="commodity-button" data-symbol="CAPITALCOM:VIX">VIX</button>
                  <button class="commodity-button" data-symbol="TVC:MOVE">MOVE Index</button>
             </div>
@@ -363,8 +384,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.commodity-button');
-            buttons.forEach(button => {
+            // Handler for individual commodity buttons
+            const commodityButtons = document.querySelectorAll('.commodity-button');
+            commodityButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const symbol = this.getAttribute('data-symbol');
                     if (symbol) {
@@ -373,7 +395,21 @@
                         // Open the URL in a new tab
                         window.open(chartUrl, '_blank');
                     } else {
-                        console.error('Commodity button is missing data-symbol attribute.');
+                        console.error('Button is missing data-symbol attribute.');
+                    }
+                });
+            });
+
+            // Handler for "View All" buttons
+            const viewAllButtons = document.querySelectorAll('.view-all-button');
+            viewAllButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    if (category) {
+                        const multiChartUrl = `multi-chart-view.html?category=${encodeURIComponent(category)}`;
+                        window.open(multiChartUrl, '_blank');
+                    } else {
+                         console.error('View All button is missing data-category attribute.');
                     }
                 });
             });
