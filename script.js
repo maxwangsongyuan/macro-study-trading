@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // (Keep the existing contentData object with all translations)
     const contentData = {
         zh: {
-            title: "J. Law 交易智慧",
-            mainHeading: "J. Law 交易智慧",
+            title: "交易智慧",
+            mainHeading: "交易智慧",
             toggleButton: "Switch to English",
             rulesHeading: "交易守则",
             mindsetHeading: "交易思维",
@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         en: {
-            title: "J. Law Trading Wisdom",
-            mainHeading: "J. Law Trading Wisdom",
+            title: "Trading Wisdom",
+            mainHeading: "Trading Wisdom",
             toggleButton: "切换中文",
             rulesHeading: "Trading Rules",
             mindsetHeading: "Trading Mindset",
