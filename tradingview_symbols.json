@@ -38,7 +38,6 @@
     { "s": "CAPITALCOM:WHEAT", "d": "Wheat CFD" }
   ],
   "Sentiment/Volatility": [
-    { "s": "CAPITALCOM:VIX", "d": "VIX" },
-    { "s": "TVC:MOVE", "d": "MOVE Index" }
+    { "s": "CAPITALCOM:VIX", "d": "VIX" }
   ]
 }
