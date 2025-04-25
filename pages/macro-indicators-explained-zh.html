@@ -167,14 +167,103 @@ END
         </pre>
     </div>
 
-    <!-- Section 5: FAQ -->
+    <!-- Section 5: Detailed Indicator Guide -->
     <div class="section">
-        <h2>五、常见 Q&A</h2>
-        <ul>
-            <li><strong>每天都要检查吗？</strong> 前 1-2 个月最好坚持，熟悉后可在脑海形成“条件树”。</li>
-            <li><strong>周中突发事件怎么办？</strong> 保持 MOVE、VIX、DXY 的实时提醒，它们能最快反映跨资产风险。</li>
-            <li><strong>只做美股需要看这么多吗？</strong> 至少保持“钱多钱少”路径 (US10Y, MOVE, VIX)。其余可低频复盘。</li>
-        </ul>
+        <h2>五、核心指标深度解读</h2>
+        <style>
+            .indicator-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+            .indicator-table th, .indicator-table td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+            .indicator-table th { background-color: #e7f3ff; font-weight: bold; }
+            .indicator-table td ul { margin-top: 5px; margin-bottom: 5px; padding-left: 18px; }
+            .indicator-table td li { margin-bottom: 3px; }
+            .indicator-table code { background-color: #eee; padding: 2px 5px; border-radius: 3px; font-family: monospace; font-size: 13px; }
+        </style>
+        <table class="indicator-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>指标</th>
+                    <th>为什么一定要看（深度版）</th>
+                    <th>什么叫“正常”？ & 背景</th>
+                    <th>异常阈值 & 逻辑</th>
+                    <th>小白怎么使用</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>US10Y 10 Y 美债收益率</td>
+                    <td><ul><li>全球资产贴现率的“原点”，影响债／股／商品定价</li><li>直接反映长期增长和通胀预期；也是美联储真实政策立场的“考卷”</li><li>与 IG / HY 利差、房贷利率等高度相关，可从金融条件层面指向企业与居民融资成本</li></ul></td>
+                    <td><ul><li>2 % – 4 % ≈ 过去 20 年中枢，表明经济增长≈通胀</li><li>单日波幅 ±3 – 5 bp = 流动性微调、常规数据消化</li><li>收益率曲线正常情况下随期限上升（term-premium）</li></ul></td>
+                    <td><ul><li>单日 ±10 bp：暗示重大宏观/政策/地缘事件</li><li>> 4.5 %：高于 15 年任何紧缩区间——资金“昂贵”，成长股估值压缩</li><li>< 2 %：衰退定价或通缩担忧；利率敏感资产（REIT、成长股）获喘息</li></ul></td>
+                    <td><ul><li>每天收盘后看 TradingView 上 US10Y 收益率。</li><li>若 > 4.5 %，减少高估值成长股 / 加些现金或短债 ETF (<code>SHY</code>)。</li><li>若 < 2 %，考虑加仓久期长的债券或利率敏感资产 (REIT)。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>T10Y2Y (10Y – 2Y)</td>
+                    <td><ul><li>利率曲线形态＝长短期增长与政策分歧的“剖面图”</li><li>历史经验：深度倒挂→衰退领先指标（平均领先 12–18 个月）</li><li>与银行净息差、放贷意愿挂钩，是金融条件的另一把温度计</li></ul></td>
+                    <td><ul><li>+50 ~ +100 bp：扩张期常态（长端>短端）</li><li>“零轴”附近：市场开始担心增长放缓或政策见顶</li></ul></td>
+                    <td><ul><li>< 0 bp 倒挂：短端>长端→政策偏紧</li><li>< –50 bp 且持续 ≥3 月：过去 8 次美国衰退均出现，相当于“红色警戒”</li><li>倒挂消失→宽松信号，但若靠短端大幅下行修复，则常伴随衰退落地</li></ul></td>
+                    <td><ul><li>每周五看曲线差值 (US10Y-UST2Y 小工具即可)。</li><li>若持续深度倒挂，减少经济敏感股，加仓防御/现金。</li><li>倒挂解除而短端猛跌→衰退落地，准备逢低布局优质股债。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>DXY 美元指数</td>
+                    <td><ul><li>衡量美元对 6 种货币强弱，是全球流动性方向盘</li><li>美元走强→新兴市场外流、商品承压；走弱→风险资产获利好</li><li>亦反映美国与他国利差、避险情绪及美元融资压力</li></ul></td>
+                    <td><ul><li>95 – 105：2015 年以来约 65 % 时间处于此“中性走廊”</li><li>与美元流动性、美元荒 (FX swap basis) 同步观察</li></ul></td>
+                    <td><ul><li>> 105：资金回流美国、全球流动性收紧；对大宗与非美股市不利</li><li>< 95：热钱外溢；商品和新兴市场股汇双强</li><li>> 110 或 < 90：须警惕央行干预或剧烈汇率再平衡</li></ul></td>
+                    <td><ul><li>在手机 FX app 设提醒：DXY 突破 105 / 跌破 95。</li><li>DXY>105 时减仓新兴市场 ETF、加仓美元现金或美债。</li><li>DXY<95 可考虑配置大宗商品 (<code>GLD</code>、<code>DBC</code>) 或 EM ETF (<code>EEM</code>)。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>EURUSD</td>
+                    <td><ul><li>DXY 最大对手盘（权重≈57 %），能拆分“美元强”还是“欧元弱”</li><li>受美欧利差、欧洲能源 / 政策风险、避险情绪三重驱动</li><li>对全球风险偏好的边际贡献高于其他单一货币对</li></ul></td>
+                    <td><ul><li>1.05 – 1.12：横盘区，对应美欧 2Y 利差 ±150 bp 内</li><li>核心波动解释力：美元流动性或欧元区宏观预期变化</li></ul></td>
+                    <td><ul><li>< 1.05：欧元破心理关口——要么欧央行更鸽，要么避险美元买盘强</li><li>> 1.12：欧元走强——欧元区增长/通胀优于美国或美元放水</li><li>≤ 1.00 或 ≥ 1.20：常触发口头/实质干预，进出口企业套保需求激增</li></ul></td>
+                    <td><ul><li>只在欧洲/美国重大数据日留意 (ECB/FOMC、CPI)。</li><li>< 1.05 时警惕欧债/能源风险，避免重仓欧股。</li><li>> 1.12 时欧股/奢侈品股通常受益，可寻找机会。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>SPX 标普 500</td>
+                    <td><ul><li>占全球市值近 40 %，是风险偏好的头号晴雨表</li><li>行业与风格分布均衡，可映射美国宏观基本面与流动性变化</li><li>与 VIX、HY 利差共振，可验证“金融条件—经济—情绪”链条</li></ul></td>
+                    <td><ul><li>日内 ±0.5 %：“健康呼吸”</li><li>50 日均线 ≈ 中期多空分水岭</li><li>成交量 / 期权 put-call ratio 辅助判断动能</li></ul></td>
+                    <td><ul><li>±1 % 以上单日：市场在消化宏观或巨型财报</li><li>跌破 / 站上 50MA：中期趋势转向—需配合 VIX 方向确认真假突破</li><li>> +10 % 月度涨幅 或 < –10 %：极端情绪，容易出现 mean-reversion 或政策信号</li></ul></td>
+                    <td><ul><li>日常看 SPX + 50MA：跌破 50MA 减仓，站上再加。</li><li>若日内跌幅>1 %且 VIX 同升，停止追高、观望。</li><li>计划性定投：月初按固定金额买入，不被日波动干扰。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>NDX / SPX 比值</td>
+                    <td><ul><li>高倍镜：利率/增长预期变化首先反映在科技 vs 大盘</li><li>利用成长(β) 与价值(α) 的切换捕捉风格轮动，指导行业配置</li><li>亦可映照市场对“长久期现金流”资产的贴现率偏好</li></ul></td>
+                    <td><ul><li>温和爬升：利率稳定或下行、成长溢价扩张</li><li>日内 ±1 – 2 % 摆动属正常噪声</li></ul></td>
+                    <td><ul><li>连续 ≥5 日 同向、且 > 0.5 %/日：机构进行风格调仓</li><li>急跌 ≥5 %/周：多为利率上跳或监管/科技负面冲击</li><li>创新高 / 新低：需对照 US10Y 与大盘估值，看是否进入单边趋势</li></ul></td>
+                    <td><ul><li>每周查看比值走势：若连涨且 US10Y 下行，可多配科技 ETF (<code>QQQ</code>)。</li><li>若比值急跌且利率上跳，降低科技仓、转向价值 (<code>VTV</code>)。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>WTI 原油</td>
+                    <td><ul><li>兼具供给（地缘 / OPEC）与需求（全球活动）的双重属性</li><li>是 CPI 能源分项、通胀预期与企业成本的关键输入</li><li>对石油货币、能源股、航运航空盈利和美债盈亏均有即时影响</li></ul></td>
+                    <td><ul><li>$70 – 90/bbl：2021-24 被视为“温和区”，能源对 CPI 贡献可控</li><li>日内 ±2 % 偏技术性交易或库存噪声</li></ul></td>
+                    <td><ul><li>连续 3 天 ±3 %：供应链或地缘触发趋势</li><li>> $100：能源通胀压力跳升→央行紧缩预期增强</li><li>< $60：需求衰退或供给过剩信号→避险资产走强</li></ul></td>
+                    <td><ul><li>设置油价 > $100 推送：考虑能源股 (<code>XLE</code>) 或通胀保值债 (<code>TIP</code>)。</li><li>油价 < $60 且 DXY 未走弱→全球衰退风险，增配避险资产 (金/长债)。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>VIX</td>
+                    <td><ul><li>“股市保险费”＝未来 30 天隐含波动率</li><li>把握情绪拐点、对冲需求、资金杠杆水平的一站式指标</li><li>与 SKEW、VVIX、MOVE 可互相印证风险溢价结构</li></ul></td>
+                    <td><ul><li>15 – 20：投资者“心跳平稳”；gamma 卖方活跃</li><li>< 15：极度乐观，自满情绪累积</li><li>> 20：情绪紧张，对冲需求上升</li></ul></td>
+                    <td><ul><li>> 25：必须支付高价买保护→潜在 5 % 以上回撤</li><li>> 40：系统性风险警报，多头需减仓或对冲</li><li>< 12 且持续：往往是“平静后的暴风”前奏</li></ul></td>
+                    <td><ul><li>在券商 app 设提醒：VIX>25。</li><li>超 25 时停止加杠杆，考虑买保护性 PUT 或减仓。</li><li>VIX<15 连续 2 周：留意潜在回调，控制仓位集中度。</li></ul></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>MOVE (美债隐含波动率)</td>
+                    <td><ul><li>债券市场的 VIX，提前感知“利率风暴”</li><li>取 2Y/5Y/10Y/30Y 1M 期权隐含波动率加权平均，覆盖最活跃券种</li><li>与 US10Y 波幅、金融股估值、宏观 CTA 仓位紧密相关</li></ul></td>
+                    <td><ul><li>< 80：债市平静，收益率估值按部就班</li><li>80 – 120：常态，数据或政策牵动日波 5–10 bp</li></ul></td>
+                    <td><ul><li>120 – 150：紧张区，CPI 爆表或 FOMC 悬念；日波 10 bp+，科技股先受压</li><li>> 150：罕见恐慌（08/20 初期），易现股债双杀或流动性抽干→迅速减杠杆、加现金</li></ul></td>
+                    <td><ul><li>只在 CPI、NFP、FOMC 等关键宏观日刷新。</li><li>在 TradingView 设告警：MOVE > 120 推送。</li><li>MOVE 拉高后立刻检查：<ul><li>US02Y/US10Y 是否同步跳水/飙升 → 政策定价动了？</li><li>DXY 是否走强 → 流动性紧？</li></ul></li><li>若重仓科技/成长，MOVE 急升时降杠杆或用 <code>TLT</code> 期权对冲。</li></ul></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
      <!-- Section 6: Quick Checklist -->
