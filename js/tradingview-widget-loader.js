@@ -22,6 +22,7 @@ function loadAdvancedTradingViewWidget(containerId, symbol) {
         "autosize": true,
         "symbol": symbol, // Use the passed symbol
         "interval": "D",
+        "dateRange": "12M",
         "timezone": "America/New_York",
         "theme": "light",
         "style": "9", // Advanced chart style
