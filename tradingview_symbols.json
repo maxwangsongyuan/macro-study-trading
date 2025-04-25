@@ -10,8 +10,8 @@
     { "s": "FX:USDHKD", "d": "美元/港元" }
   ],
   "Rates": [
-    { "s": "TVC:US10Y", "d": "US 10Y Treasury" },
-    { "s": "TVC:US02Y", "d": "US 2Y Treasury" },
+   { "s": "PYTH:US10Y", "d": "US 10Y Treasury" },
+   { "s": "PYTH:US02Y", "d": "US 2Y Treasury" },
     { "s": "TVC:DE10Y", "d": "German 10Y Bund" },
     { "s": "TVC:JP10Y", "d": "Japanese 10Y Bond" },
     { "s": "TVC:CN10Y", "d": "Chinese 10Y Bond" },
