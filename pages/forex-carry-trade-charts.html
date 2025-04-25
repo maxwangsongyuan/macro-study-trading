@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Carry Trade Analysis Charts</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Strict 3 columns */
+            gap: 20px;
+        }
+        .multi-chart-item {
+            height: 600px; /* Increased height for advanced charts */
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            /* No padding needed as widget handles its own */
+        }
+         /* Ensure copyright is visible and doesn't overlap */
+        .tradingview-widget-copyright { display: block !important; text-align: center; font-size: 13px; color: #9db2bd; }
+        .tradingview-widget-copyright .blue-text { color: #2962FF; }
+        .tradingview-widget-copyright a { text-decoration: none; color: #9db2bd; }
+        .tradingview-widget-copyright a:visited { color: #9db2bd; }
+        .tradingview-widget-copyright a:hover { text-decoration: underline; color: #2962FF; }
+        .navigation { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; text-align: center; }
+        .navigation a { margin-right: 15px; color: #007bff; text-decoration: none; }
+        .navigation a:hover { text-decoration: underline; }
+    </style>
+    <!-- TradingView Core Library -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <!-- Reusable Widget Loader -->
+    <script src="../js/tradingview-widget-loader.js"></script>
+</head>
+<body>
+
+<div class="navigation">
+    <a href="../index.html">Back to Home</a> |
+    <a href="macro-analysis-guide-zh.html">Back to Guide (返回指南)</a>
+</div>
+
+<h1>Forex Carry Trade Analysis Charts</h1>
+<div id="chart-grid" class="chart-grid">
+
+    <!-- DXY Chart -->
+    <div class="multi-chart-item">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div id="tradingview_dxy" style="height:100%;width:100%"></div>
+          <!-- Copyright will be handled by the widget -->
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+    <!-- EURUSD Chart -->
+    <div class="multi-chart-item">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div id="tradingview_eurusd" style="height:100%;width:100%"></div>
+           <!-- Copyright will be handled by the widget -->
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+    <!-- USDJPY Chart -->
+    <div class="multi-chart-item">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div id="tradingview_usdjpy" style="height:100%;width:100%"></div>
+           <!-- Copyright will be handled by the widget -->
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    // Load the widgets using the reusable function
+    loadAdvancedTradingViewWidget('tradingview_dxy', 'INDEX:DXY');
+    loadAdvancedTradingViewWidget('tradingview_eurusd', 'FX:EURUSD');
+    loadAdvancedTradingViewWidget('tradingview_usdjpy', 'FX:USDJPY');
+</script>
+
+</body>
+</html>
