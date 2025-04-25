@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 分钟晨间宏观盘前工作流</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 { text-align: center; margin-bottom: 30px; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 40px; }
+        h3 { margin-top: 25px; color: #555; }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+        .widget-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 20px; /* Spacing between widgets */
+            margin-top: 20px;
+        }
+        .tv-widget {
+            height: 350px; /* Adjust height as needed */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        code { background-color: #eee; padding: 2px 5px; border-radius: 3px; }
+        .mermaid { text-align: center; margin-top: 20px; background-color: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
+        .checklist-item { margin-bottom: 15px; }
+        .checklist-item strong { display: block; margin-bottom: 5px; color: #0056b3; }
+        .quick-list li { background-color: #e7f3ff; padding: 5px 10px; border-radius: 4px; margin-bottom: 5px; }
+        .thinking-paths-container {
+            display: flex;
+            gap: 20px; /* Spacing between columns */
+            flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+        }
+        .thinking-path-column {
+            flex: 1; /* Allow columns to grow and shrink */
+            min-width: 280px; /* Minimum width before wrapping */
+            background-color: #fff; /* Optional: background for columns */
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+    </style>
+    <!-- TradingView Widget Library -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <!-- Mermaid Diagram Library -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <!-- Custom Widget Loader -->
+    <script src="../js/tradingview-widget-loader.js"></script>
+</head>
+<body>
+
+    <a href="../index.html" class="home-button">返回首页</a>
+    <h1>30 分钟晨间宏观盘前工作流</h1>
+
+    <!-- Section 1: Daily Actions -->
+    <div class="section">
+        <h2>一、每日 4 动作</h2>
+        <ol>
+            <li><strong>抓取昨夜行情:</strong> 查看下方实时指标看板，了解隔夜变化及当前数值区间。</li>
+            <li><strong>标注“红/绿灯”:</strong> 对照“异常阈值”，在个人笔记中标注风险点 (此页面不提供自动标注)。</li>
+            <li><strong>问题清单式检查:</strong> 参照下方“三条思考路径”进行自我提问。</li>
+            <li><strong>拟定当日计划:</strong> 将宏观判断转化为具体交易动作，记录下来。</li>
+        </ol>
+        <p><strong>⏱ 时间分配建议:</strong> 拉数据 & 标红绿 (10 min) | 思考路径问题清单 (15 min) | 写下当日计划 (5 min)</p>
+    </div>
+
+    <!-- Section 2: Live Indicator Dashboard -->
+    <div class="section">
+        <h2>二、实时指标看板</h2>
+        <p>（请注意：NDX/SPX 比率显示为独立图表，非直接比率线）</p>
+        <div class="widget-container">
+            <div id="tv-widget-us10y" class="tv-widget"></div>
+            <div id="tv-widget-t10y2y" class="tv-widget"></div>
+            <div id="tv-widget-dxy" class="tv-widget"></div>
+            <div id="tv-widget-eurusd" class="tv-widget"></div>
+            <div id="tv-widget-spx" class="tv-widget"></div>
+            <div id="tv-widget-ndx-spx" class="tv-widget"></div> <!-- NDX/SPX Ratio -->
+            <div id="tv-widget-wti" class="tv-widget"></div>
+            <div id="tv-widget-vix" class="tv-widget"></div>
+            <div id="tv-widget-move" class="tv-widget"></div> <!-- MOVE widget included with TVC:MOVE -->
+        </div>
+    </div>
+
+    <!-- Section 3: Thinking Paths -->
+    <div class="section">
+        <h2>三、3 条思考路径</h2>
+        <div class="thinking-paths-container">
+            <div class="thinking-path-column">
+                <h3>1. “钱多钱少”路径：利率 + 波动</h3>
+                <ul>
+                    <li class="checklist-item"><strong>步骤 1-A:</strong> 自问: MOVE > 120 吗？<br>触发信号 (是): 债市恐慌；看 US10Y 日波幅是否 > ±10 bp。<br>行动示例: 降杠杆、加现金或 T-Bill ETF (BIL)。 (注: 检查下方 MOVE 图表)</li>
+                    <li class="checklist-item"><strong>步骤 1-B:</strong> 自问: US10Y > 4.5 % 吗？<br>触发信号 (是): 资金成本高。<br>行动示例: 减长久期资产 (QQQ/ARKK)。</li>
+                    <li class="checklist-item"><strong>步骤 1-C:</strong> 自问: T10Y2Y 仍 < –50 bp 且持续？<br>触发信号 (是): 衰退未定价完。<br>行动示例: 提前做防御：必需消费 / 医药。</li>
+                </ul>
+            </div>
+            <div class="thinking-path-column">
+                <h3>2. “美元挤兑”路径：DXY + EURUSD</h3>
+                <ul>
+                    <li class="checklist-item"><strong>步骤 2-A:</strong> 自问: DXY > 105？<br>触发信号 (是): 流动性回流美国。<br>行动示例: 减仓 EM ETF (EEM)、大宗商品。</li>
+                    <li class="checklist-item"><strong>步骤 2-B:</strong> 自问: EURUSD < 1.05？<br>触发信号 (是): 避险 or 欧元区疲弱。<br>行动示例: 少碰欧股／奢侈品；关注欧债风险。</li>
+                    <li class="checklist-item"><strong>步骤 2-C:</strong> 自问: 若 DXY ↑ 而 US10Y ↓？<br>触发信号: “风险厌恶买美债”模式。<br>行动示例: 关注避险资产（金、长债）机会。</li>
+                </ul>
+            </div>
+            <div class="thinking-path-column">
+                <h3>3. “风险偏好”路径：股指 + 波动率</h3>
+                <ul>
+                    <li class="checklist-item"><strong>步骤 3-A:</strong> 自问: VIX > 25？<br>触发信号 (是): 股市保险费高。<br>行动示例: 停止追高；可买保护性 PUT。</li>
+                    <li class="checklist-item"><strong>步骤 3-B:</strong> 自问: SPX < 50MA 且 NDX/SPX 连跌？<br>触发信号 (是): 成长→价值轮动。<br>行动示例: 减科技，加价值 (VTV)。</li>
+                    <li class="checklist-item"><strong>步骤 3-C:</strong> 自问: WTI > $100 且 VIX 同升？<br>触发信号 (是): 滞胀风险。<br>行动示例: 更关注能源股、减高估值成长。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Decision Flowchart -->
+    <div class="section">
+        <h2>四、决策流程图</h2>
+        <pre style="background-color: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; line-height: 1.5; font-family: monospace;">
+START → 抓取隔夜 9 指标最新值
+│
+├─ ① MOVE > 120 ？—— 是 → 立刻 Risk-Off 操作
+│     ├─ 减掉高 β / 高杠杆仓位
+│     └─ 再看 US10Y > 4.5%？—— 是 → 进一步减成长＋加现金
+│
+├─ ② DXY > 105 ？—— 是 → 流动性收紧
+│     ├─ 减持 EM / Commodities（EEM, DBC…）
+│     └─ 关注 EURUSD、非美股汇
+│
+├─ ③ VIX > 25 ？—— 是 → 暂停加仓、考虑保护性 Put
+│
+├─ ④ SPX 在 50MA 之上/下？
+│     ├─ 下破 → 谨慎、可能部分止盈
+│     └─ 站上 → 若①②③均无红灯，可择机加仓
+│
+└─ ⑤ 写下当日计划 & 设置二次提醒（价格 or 指标突破）
+END
+        </pre>
+    </div>
+
+    <!-- Section 5: FAQ -->
+    <div class="section">
+        <h2>五、常见 Q&A</h2>
+        <ul>
+            <li><strong>每天都要检查吗？</strong> 前 1-2 个月最好坚持，熟悉后可在脑海形成“条件树”。</li>
+            <li><strong>周中突发事件怎么办？</strong> 保持 MOVE、VIX、DXY 的实时提醒，它们能最快反映跨资产风险。</li>
+            <li><strong>只做美股需要看这么多吗？</strong> 至少保持“钱多钱少”路径 (US10Y, MOVE, VIX)。其余可低频复盘。</li>
+        </ul>
+    </div>
+
+     <!-- Section 6: Quick Checklist -->
+    <div class="section">
+        <h2>六、快速复用清单</h2>
+        <ul class="quick-list">
+            <li><strong>US10Y / MOVE:</strong> 资金贵不贵，波动大不大？</li>
+            <li><strong>DXY / EURUSD:</strong> 美元吸血还是放水？</li>
+            <li><strong>T10Y2Y:</strong> 景气在变好还是衰退将至？</li>
+            <li><strong>SPX / NDX-SPX / VIX:</strong> 股票 Beta、风格、情绪是否同步？</li>
+            <li><strong>WTI:</strong> 通胀&增长双重信号，警示滞胀。</li>
+        </ul>
+        <p><em>永远让宏观指标服务你的仓位，而不是反过来被信息淹没。</em></p>
+    </div>
+
+    <!-- Script to load widgets -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load TradingView Widgets with corrected symbols
+            loadAdvancedTradingViewWidget('tv-widget-us10y', 'TVC:US10Y'); // Kept as per JSON
+            loadAdvancedTradingViewWidget('tv-widget-t10y2y', 'FRED:T10Y2Y'); // Corrected
+            loadAdvancedTradingViewWidget('tv-widget-dxy', 'INDEX:DXY'); // Corrected
+            loadAdvancedTradingViewWidget('tv-widget-eurusd', 'FX:EURUSD'); // Was working
+            loadAdvancedTradingViewWidget('tv-widget-spx', 'FOREXCOM:SPXUSD'); // Corrected
+            loadAdvancedTradingViewWidget('tv-widget-ndx-spx', 'FOREXCOM:NAS100/FOREXCOM:SPXUSD'); // Corrected Ratio
+            loadAdvancedTradingViewWidget('tv-widget-wti', 'TVC:USOIL'); // Corrected
+            loadAdvancedTradingViewWidget('tv-widget-vix', 'CAPITALCOM:VIX'); // Corrected
+            loadAdvancedTradingViewWidget('tv-widget-move', 'TVC:MOVE'); // Included as requested, may not work
+        });
+    </script>
+
+</body>
+</html>
