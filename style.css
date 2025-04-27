@@ -176,3 +176,123 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Styles moved from tradingview-dashboard.html */
+.widget-section {
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navigation {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.navigation a {
+    margin: 0 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.tradingview-widget-container {
+    margin: auto; /* Center widgets if needed */
+}
+
+/* Ensure copyright is visible */
+.tradingview-widget-copyright {
+    text-align: center;
+    font-size: 13px;
+    color: #9db2bd;
+    margin-top: 8px;
+}
+
+.tradingview-widget-copyright .blue-text {
+    color: #2962FF;
+}
+
+.tradingview-widget-copyright a {
+    text-decoration: none;
+    color: #9db2bd;
+}
+
+.tradingview-widget-copyright a:visited {
+    color: #9db2bd;
+}
+
+.tradingview-widget-copyright a:hover {
+    text-decoration: underline;
+    color: #2962FF;
+}
+
+/* Styles for two-column layout and buttons */
+.commodity-section-container {
+    display: flex;
+    gap: 20px; /* Space between widget and buttons */
+}
+
+.commodity-widget-container {
+    flex: 1; /* Widget takes available space */
+    min-width: 0; /* Prevent widget from overflowing */
+}
+
+.commodity-buttons-container {
+    flex-basis: 180px; /* Fixed width for the button column */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between buttons */
+    padding-top: 40px; /* Align roughly with the top of the list */
+}
+
+.commodity-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 13px;
+    text-decoration: none; /* For anchor tag styling */
+    display: inline-block; /* For anchor tag styling */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.commodity-button:hover {
+    background-color: #0056b3;
+}
+
+.view-all-button {
+    display: block; /* Make it block level */
+    width: fit-content; /* Size to content */
+    /* margin: -10px auto 20px auto; */ /* Centering handled by container now */
+    padding: 6px 15px;
+    background-color: #6c757d; /* Grey color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+ .view-all-button:hover {
+    background-color: #5a6268;
+}
+
+/* Style for loading message */
+.loading-message {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+    font-style: italic;
+}

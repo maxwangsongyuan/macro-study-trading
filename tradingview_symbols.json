@@ -22,6 +22,7 @@
     { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
     { "s": "FOREXCOM:NAS100", "d": "Nasdaq 100" },
     { "s": "FOREXCOM:DJI", "d": "Dow 30" },
+    { "s": "AMEX:IWM", "d": "Russell 2000 Index" },
     { "s": "XETR:DAX", "d": "DAX" },
     { "s": "FXOPEN:UK100", "d": "FTSE 100" },
     { "s": "FXOPEN:HSI", "d": "Hang Seng" },
