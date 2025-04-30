@@ -35,12 +35,7 @@
         .home-button:hover {
             background-color: #0056b3;
         }
-        .widget-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
-            gap: 20px; /* Spacing between widgets */
-            margin-top: 20px;
-        }
+        /* Removed old .widget-container style */
         .tv-widget {
             height: 350px; /* Adjust height as needed */
             border: 1px solid #ddd;
@@ -53,19 +48,29 @@
         .checklist-item { margin-bottom: 15px; }
         .checklist-item strong { display: block; margin-bottom: 5px; color: #0056b3; }
         .quick-list li { background-color: #e7f3ff; padding: 5px 10px; border-radius: 4px; margin-bottom: 5px; }
-        .thinking-paths-container {
-            display: flex;
-            gap: 20px; /* Spacing between columns */
-            flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+        /* Removed old .thinking-paths-container and .thinking-path-column styles */
+
+        /* --- NEW CSS RULES --- */
+        .chart-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px; /* Add space below chart rows */
         }
-        .thinking-path-column {
-            flex: 1; /* Allow columns to grow and shrink */
-            min-width: 280px; /* Minimum width before wrapping */
-            background-color: #fff; /* Optional: background for columns */
+        .text-row {
+            margin-bottom: 30px; /* Add space below text rows */
             padding: 15px;
-            border-radius: 5px;
+            background-color: #ffffff; /* White background for text */
             border: 1px solid #eee;
+            border-radius: 5px;
         }
+        .text-row h3 { /* Style heading within text row */
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        /* --- END NEW CSS RULES --- */
     </style>
     <!-- TradingView Widget Library -->
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -82,94 +87,117 @@
     <a href="../../index.html" class="home-button">返回首页</a> <!-- Updated path -->
     <h1>30 分钟晨间宏观盘前工作流</h1>
 
-    <!-- Section 1: Daily Actions -->
-    <div class="section">
-        <h2>一、每日 4 动作</h2>
-        <ol>
-            <li><strong>抓取昨夜行情:</strong> 查看下方实时指标看板，了解隔夜变化及当前数值区间。</li>
-            <li><strong>标注“红/绿灯”:</strong> 对照“异常阈值”，在个人笔记中标注风险点 (此页面不提供自动标注)。</li>
-            <li><strong>问题清单式检查:</strong> 参照下方“三条思考路径”进行自我提问。</li>
-            <li><strong>拟定当日计划:</strong> 将宏观判断转化为具体交易动作，记录下来。</li>
-        </ol>
-        <p><strong>⏱ 时间分配建议:</strong> 拉数据 & 标红绿 (10 min) | 思考路径问题清单 (15 min) | 写下当日计划 (5 min)</p>
-    </div>
 
-    <!-- Section 2: Live Indicator Dashboard -->
+    <!-- Section 1: Live Indicator Dashboard -->
     <div class="section">
-        <h2>二、实时指标看板</h2>
+        <h2>一、实时指标看板</h2>
         <p>（请注意：NDX/SPX 比率显示为独立图表，非直接比率线）</p>
-        <div class="widget-container">
+
+        <!-- Row 1: Charts -->
+        <div class="chart-row">
             <div id="tv-widget-move" class="tv-widget"></div> <!-- MOVE widget included with TVC:MOVE -->
             <div id="tv-widget-us10y" class="tv-widget"></div>
             <div id="tv-widget-t10y2y" class="tv-widget"></div>
+        </div>
+
+        <!-- Row 2: Text Checklist 1 -->
+        <div class="text-row">
+            <h3>1. “钱多钱少”路径：利率 + 波动</h3>
+            <ul>
+                <li class="checklist-item"><strong>步骤 1-A:</strong> 自问: MOVE > 120 吗？<br>触发信号 (是): 债市恐慌；看 US10Y 日波幅是否 > ±10 bp。<br>行动示例: 降杠杆、加现金或 T-Bill ETF (BIL)。 (注: 检查下方 MOVE 图表)</li>
+                <li class="checklist-item"><strong>步骤 1-B:</strong> 自问: US10Y > 4.5 % 吗？<br>触发信号 (是): 资金成本高。<br>行动示例: 减长久期资产 (QQQ/ARKK)。</li>
+                <li class="checklist-item"><strong>步骤 1-C:</strong> 自问: T10Y2Y 仍 < –50 bp 且持续？<br>触发信号 (是): 衰退未定价完。<br>行动示例: 提前做防御：必需消费 / 医药。</li>
+            </ul>
+        </div>
+
+        <!-- Row 3: Charts -->
+        <div class="chart-row">
             <div id="tv-widget-dxy" class="tv-widget"></div>
             <div id="tv-widget-eurusd" class="tv-widget"></div>
             <div id="tv-widget-wti" class="tv-widget"></div>
+        </div>
+
+        <!-- Row 4: Text Checklist 2 -->
+        <div class="text-row">
+            <h3>2. “美元挤兑”路径：DXY + EURUSD</h3>
+            <ul>
+                <li class="checklist-item"><strong>步骤 2-A:</strong> 自问: DXY > 105？<br>触发信号 (是): 流动性回流美国。<br>行动示例: 减仓 EM ETF (EEM)、大宗商品。</li>
+                <li class="checklist-item"><strong>步骤 2-B:</strong> 自问: EURUSD < 1.05？<br>触发信号 (是): 避险 or 欧元区疲弱。<br>行动示例: 少碰欧股／奢侈品；关注欧债风险。</li>
+                <li class="checklist-item"><strong>步骤 2-C:</strong> 自问: 若 DXY ↑ 而 US10Y ↓？<br>触发信号: “风险厌恶买美债”模式。<br>行动示例: 关注避险资产（金、长债）机会。</li>
+            </ul>
+        </div>
+
+        <!-- Row 5: Charts -->
+        <div class="chart-row">
             <div id="tv-widget-vix" class="tv-widget"></div>
             <div id="tv-widget-spx" class="tv-widget"></div>
             <div id="tv-widget-ndx-spx" class="tv-widget"></div> <!-- NDX/SPX Ratio -->
         </div>
-    </div>
 
-    <!-- Section 3: Thinking Paths -->
-    <div class="section">
-        <h2>三、3 条思考路径</h2>
-        <div class="thinking-paths-container">
-            <div class="thinking-path-column">
-                <h3>1. “钱多钱少”路径：利率 + 波动</h3>
-                <ul>
-                    <li class="checklist-item"><strong>步骤 1-A:</strong> 自问: MOVE > 120 吗？<br>触发信号 (是): 债市恐慌；看 US10Y 日波幅是否 > ±10 bp。<br>行动示例: 降杠杆、加现金或 T-Bill ETF (BIL)。 (注: 检查下方 MOVE 图表)</li>
-                    <li class="checklist-item"><strong>步骤 1-B:</strong> 自问: US10Y > 4.5 % 吗？<br>触发信号 (是): 资金成本高。<br>行动示例: 减长久期资产 (QQQ/ARKK)。</li>
-                    <li class="checklist-item"><strong>步骤 1-C:</strong> 自问: T10Y2Y 仍 < –50 bp 且持续？<br>触发信号 (是): 衰退未定价完。<br>行动示例: 提前做防御：必需消费 / 医药。</li>
-                </ul>
-            </div>
-            <div class="thinking-path-column">
-                <h3>2. “美元挤兑”路径：DXY + EURUSD</h3>
-                <ul>
-                    <li class="checklist-item"><strong>步骤 2-A:</strong> 自问: DXY > 105？<br>触发信号 (是): 流动性回流美国。<br>行动示例: 减仓 EM ETF (EEM)、大宗商品。</li>
-                    <li class="checklist-item"><strong>步骤 2-B:</strong> 自问: EURUSD < 1.05？<br>触发信号 (是): 避险 or 欧元区疲弱。<br>行动示例: 少碰欧股／奢侈品；关注欧债风险。</li>
-                    <li class="checklist-item"><strong>步骤 2-C:</strong> 自问: 若 DXY ↑ 而 US10Y ↓？<br>触发信号: “风险厌恶买美债”模式。<br>行动示例: 关注避险资产（金、长债）机会。</li>
-                </ul>
-            </div>
-            <div class="thinking-path-column">
-                <h3>3. “风险偏好”路径：股指 + 波动率</h3>
-                <ul>
-                    <li class="checklist-item"><strong>步骤 3-A:</strong> 自问: VIX > 25？<br>触发信号 (是): 股市保险费高。<br>行动示例: 停止追高；可买保护性 PUT。</li>
-                    <li class="checklist-item"><strong>步骤 3-B:</strong> 自问: SPX < 50MA 且 NDX/SPX 连跌？<br>触发信号 (是): 成长→价值轮动。<br>行动示例: 减科技，加价值 (VTV)。</li>
-                    <li class="checklist-item"><strong>步骤 3-C:</strong> 自问: WTI > $100 且 VIX 同升？<br>触发信号 (是): 滞胀风险。<br>行动示例: 更关注能源股、减高估值成长。</li>
-                </ul>
-            </div>
+        <!-- Row 6: Text Checklist 3 -->
+        <div class="text-row">
+            <h3>3. “风险偏好”路径：股指 + 波动率</h3>
+            <ul>
+                <li class="checklist-item"><strong>步骤 3-A:</strong> 自问: VIX > 25？<br>触发信号 (是): 股市保险费高。<br>行动示例: 停止追高；可买保护性 PUT。</li>
+                <li class="checklist-item"><strong>步骤 3-B:</strong> 自问: SPX < 50MA 且 NDX/SPX 连跌？<br>触发信号 (是): 成长→价值轮动。<br>行动示例: 减科技，加价值 (VTV)。</li>
+                <li class="checklist-item"><strong>步骤 3-C:</strong> 自问: WTI > $100 且 VIX 同升？<br>触发信号 (是): 滞胀风险。<br>行动示例: 更关注能源股、减高估值成长。</li>
+            </ul>
         </div>
+
+    </div> <!-- End of Section 2 -->
+
+
+    <!-- Section 2: Practical Review Checklist -->
+    <div class="section">
+        <h2>二、实战复盘检查清单 (Practical Review Checklist)</h2>
+        <p>根据演讲者的观点，有效的复盘 (MRA) 需要脱离“看图说话”，深入当时的具体情境。问自己以下问题：</p>
+        <ul>
+            <li><strong>当时的市场背景 (大盘背景) 是什么？</strong>
+                <ul>
+                    <li>整体市场（如 SPX, QQQ）是处于上升趋势、下降趋势、还是盘整？</li>
+                    <li>市场处于趋势的哪个阶段（早期、中期、末期）？</li>
+                    <li>相对于关键支撑/阻力位或移动平均线，市场处于什么位置？</li>
+                </ul>
+            </li>
+            <li><strong>当时的板块联动关系 (板块联动关系) 如何？</strong>
+                <ul>
+                    <li>该股票所属的板块/行业是领涨还是领跌？</li>
+                    <li>资金在追逐什么 (资金在追逐什么)？是流向风险资产还是避险资产？是流向特定板块还是普涨/普跌？</li>
+                </ul>
+            </li>
+             <li><strong>这只股票的特质 (股票的特质) 是什么？</strong>
+                <ul>
+                    <li>它是领涨股/龙头股 (Leader) 还是滞后股/水尾股 (Laggard)？</li>
+                    <li>它的相对强度 (RS) 如何？（与大盘、板块内其他股票相比）</li>
+                    <li>它的波动性/股性如何？（是平稳移动还是剧烈波动？）</li>
+                </ul>
+            </li>
+            <li><strong>股票行为与市场环境的关系 (市场环境和股票的关系怎样) 如何？</strong>
+                <ul>
+                    <li>在市场上涨/下跌的日子里，这只股票的表现是强于、弱于还是同步于市场？</li>
+                    <li>它的关键行为（如突破、回调、震仓）是否发生在特定的市场背景下？</li>
+                </ul>
+            </li>
+            <li><strong>我的决策是否基于当前情境 (细节, 背景)？</strong>
+                <ul>
+                    <li>我的入场/出场/持仓决定是否考虑了上述所有背景因素？</li>
+                    <li>我是否因为过去的某个错误（例如，过早/过晚止盈）而在此次交易中僵化地采取了相反的、但可能不适合当前情境的操作？</li>
+                    <li>我是否理解了规则背后的逻辑，并根据当前“细节”和“背景”进行了调整？</li>
+                </ul>
+            </li>
+             <li><strong>策略是否适应股票类型和市场情境？</strong>
+                <ul>
+                    <li>我对止盈/止损/持仓时间的处理，是否考虑了这是龙头股还是水尾股？</li>
+                    <li>（例如：对龙头股是否给予了足够的空间让利润奔跑？对水尾股是否设置了更及时的止盈？）</li>
+                </ul>
+            </li>
+        </ul>
+        <p><em>核心：避免脱离“当时的环境”进行总结，理解每一次交易的独特性。</em></p>
     </div>
 
-    <!-- Section 4: Decision Flowchart -->
+    <!-- Section 3: Detailed Indicator Guide -->
     <div class="section">
-        <h2>四、决策流程图</h2>
-        <pre style="background-color: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; line-height: 1.5; font-family: monospace;">
-START → 抓取隔夜 9 指标最新值
-│
-├─ ① MOVE > 120 ？—— 是 → 立刻 Risk-Off 操作
-│     ├─ 减掉高 β / 高杠杆仓位
-│     └─ 再看 US10Y > 4.5%？—— 是 → 进一步减成长＋加现金
-│
-├─ ② DXY > 105 ？—— 是 → 流动性收紧
-│     ├─ 减持 EM / Commodities（EEM, DBC…）
-│     └─ 关注 EURUSD、非美股汇
-│
-├─ ③ VIX > 25 ？—— 是 → 暂停加仓、考虑保护性 Put
-│
-├─ ④ SPX 在 50MA 之上/下？
-│     ├─ 下破 → 谨慎、可能部分止盈
-│     └─ 站上 → 若①②③均无红灯，可择机加仓
-│
-└─ ⑤ 写下当日计划 & 设置二次提醒（价格 or 指标突破）
-END
-        </pre>
-    </div>
-
-    <!-- Section 5: Detailed Indicator Guide -->
-    <div class="section">
-        <h2>五、核心指标深度解读</h2>
+        <h2>三、核心指标深度解读</h2>
         <style>
             .indicator-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
             .indicator-table th, .indicator-table td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
@@ -264,19 +292,6 @@ END
                 </tr>
             </tbody>
         </table>
-    </div>
-
-     <!-- Section 6: Quick Checklist -->
-    <div class="section">
-        <h2>六、快速复用清单</h2>
-        <ul class="quick-list">
-            <li><strong>US10Y / MOVE:</strong> 资金贵不贵，波动大不大？</li>
-            <li><strong>DXY / EURUSD:</strong> 美元吸血还是放水？</li>
-            <li><strong>T10Y2Y:</strong> 景气在变好还是衰退将至？</li>
-            <li><strong>SPX / NDX-SPX / VIX:</strong> 股票 Beta、风格、情绪是否同步？</li>
-            <li><strong>WTI:</strong> 通胀&增长双重信号，警示滞胀。</li>
-        </ul>
-        <p><em>永远让宏观指标服务你的仓位，而不是反过来被信息淹没。</em></p>
     </div>
 
     <!-- Script to load widgets -->
