@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dashboardContent = document.getElementById('dashboard-content');
-    const symbolsPath = '../tradingview_symbols.json'; // Relative path from js/ to root
+    const symbolsPath = '../../tradingview_symbols.json'; // Updated relative path from assets/js/ to root
 
     if (!dashboardContent) {
         console.error('Dashboard content container #dashboard-content not found.');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target.classList.contains('commodity-button')) {
                 const symbol = target.getAttribute('data-symbol');
                 if (symbol) {
-                    const chartUrl = `advanced-chart.html?symbol=${encodeURIComponent(symbol)}`;
+                    const chartUrl = `../charts/advanced-chart.html?symbol=${encodeURIComponent(symbol)}`; // Updated path
                     window.open(chartUrl, '_blank');
                 } else {
                     console.error('Commodity button missing data-symbol attribute.');
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target.classList.contains('view-all-button')) {
                 const category = target.getAttribute('data-category');
                 if (category) {
-                    const multiChartUrl = `multi-chart-view.html?category=${encodeURIComponent(category)}`;
+                    const multiChartUrl = `../charts/multi-chart-view.html?category=${encodeURIComponent(category)}`; // Updated path
                     window.open(multiChartUrl, '_blank');
                 } else {
                     console.error('View All button missing data-category attribute.');

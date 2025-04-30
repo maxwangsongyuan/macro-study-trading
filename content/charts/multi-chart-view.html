@@ -40,7 +40,7 @@
 <!-- TradingView Core Library -->
 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 <!-- Reusable Widget Loader -->
-<script src="../js/tradingview-widget-loader.js"></script>
+<script src="../../assets/js/tradingview-widget-loader.js"></script> <!-- Updated path -->
 
 <script type="text/javascript">
     // Function to get URL parameters
@@ -59,7 +59,7 @@
         document.title = `${category} - Multi-Chart View`;
 
         // Fetch the symbol data
-        fetch('../tradingview_symbols.json') // Relative path from pages/ to root
+        fetch('../../tradingview_symbols.json') // Updated path
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
