@@ -70,6 +70,52 @@
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
+        .indicator-details-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px; /* Space below the details row */
+            font-size: 13px; /* Smaller font for details */
+        }
+        .indicator-detail-item {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            line-height: 1.5;
+        }
+        .indicator-detail-item h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #0056b3;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .indicator-detail-item strong {
+            display: inline-block; /* Keep labels inline */
+            margin-right: 5px;
+            color: #333;
+        }
+        .indicator-detail-item code {
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .indicator-detail-item ul {
+            padding-left: 18px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .indicator-detail-item li {
+            margin-bottom: 4px;
+        }
+         .section > h3 + p { /* Style paragraph directly following an h3 in the section */
+            font-style: italic;
+            color: #555;
+            margin-top: -10px; /* Pulls text closer to h3 */
+            margin-bottom: 15px; /* Space between p and chart row */
+            font-size: 14px;
+        }
         /* --- END NEW CSS RULES --- */
     </style>
     <!-- TradingView Widget Library -->
@@ -91,8 +137,8 @@
     <!-- Section 1: Live Indicator Dashboard -->
     <div class="section">
         <h2>一、实时指标看板</h2>
-        <p>（请注意：NDX/SPX 比率显示为独立图表，非直接比率线）</p>
-
+        <h3>资金成本 & 信用 (Liquidity & Credit)</h3>
+        <p><i>这一行指标主要用于评估整体资金借贷成本、债市流动性压力、以及市场对信用风险的定价。</i></p>
         <!-- Row 1: 钱多钱少 -->
         <div class="chart-row">
             <div id="tv-widget-move" class="tv-widget"></div>
@@ -100,7 +146,59 @@
             <div id="tv-widget-t10y2y" class="tv-widget"></div>
             <div id="tv-widget-hy-oas" class="tv-widget"></div>
         </div>
+        <!-- Row 1 Details -->
+        <div class="indicator-details-row">
+            <div class="indicator-detail-item">
+                <h4>1｜MOVE 指数</h4>
+                <p><strong>Code:</strong> <code>TVC:MOVE</code></p>
+                <p><strong>定义:</strong> BofA 美债期权隐含波动率综合指数，债市的 “VIX”</p>
+                <p><strong>小白理解:</strong> “未来 1 个月利率会多乱？”——越高说明不确定度 / 流动性风险越大</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>120 = 债市恐慌、融资紧张 → 降杠杆、加现金 / T-Bill</li>
+                    <li>< 80 = 环境宽松 → 可放松风控</li>
+                    <li>单日 +15 pt ≈ “宏观炸雷” 预警</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>2｜US10Y（10 年期美债收益率）</h4>
+                <p><strong>Code:</strong> <code>PYTH:US10Y</code> （或 <code>TVC:US10Y</code>）</p>
+                <p><strong>定义:</strong> 全球无风险贴现率基准</p>
+                <p><strong>小白理解:</strong> “钱有多贵？”利率越高，成长股估值越低</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>4.5 % = 限制性，高估值承压</li>
+                    <li>< 3 % = 衰退 / 降息预期</li>
+                    <li>US10Y ↑ → 减久期；US10Y ↓ → 加长久期、避险</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>3｜10Y-2Y 利差（T10Y2Y）</h4>
+                <p><strong>Code:</strong> <code>FRED:T10Y2Y</code></p>
+                <p><strong>定义:</strong> 10 Y − 2 Y 国债收益率差，曲线形态风向标</p>
+                <p><strong>小白理解:</strong> “长钱比短钱贵不贵？”倒挂＝市场押注经济转差</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>< 0 bp = 倒挂</li>
+                    <li>< –50 bp 且持续 > 6 月 = 衰退信号加强</li>
+                    <li>0 bp = 曲线再正常化 → 留意复苏交易</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>4｜ICE BofA High-Yield OAS</h4>
+                <p><strong>Code:</strong> <code>FRED:BAMLH0A0HYM2</code></p>
+                <p><strong>定义:</strong> 垃圾债到期收益率 − 同期限美债收益率（去掉期权）→ 纯信用溢价</p>
+                <p><strong>小白理解:</strong> “垃圾债得多付几个百分点才有人敢买？”</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>500 bp = 信用 / 流动性紧张 → 减高收益债、高 β</li>
+                    <li>< 350 bp = 情绪回暖 → 可加风险敞口</li>
+                </ul>
+            </div>
+        </div>
 
+        <h3>美元 & 大宗供需 (Dollar & Commodities)</h3>
+        <p><i>此行追踪美元强弱所反映的全球资本流向、通过商品比价观察增长与避险情绪，并监控能源市场动态及短期流动性状况。</i></p>
         <!-- Row 2: 美元 & 商品 -->
         <div class="chart-row">
             <div id="tv-widget-dxy" class="tv-widget"></div>
@@ -108,13 +206,112 @@
             <div id="tv-widget-brent-wti" class="tv-widget"></div>
             <div id="tv-widget-rrp" class="tv-widget"></div>
         </div>
+        <!-- Row 2 Details -->
+        <div class="indicator-details-row">
+            <div class="indicator-detail-item">
+                <h4>5｜美元指数（DXY）</h4>
+                <p><strong>Code:</strong> <code>INDEX:DXY</code></p>
+                <p><strong>定义:</strong> 美元兑一篮子主要货币强弱综合指数（EUR 权重≈58 %）</p>
+                <p><strong>小白理解:</strong> “全球资金进美国还是出美国？”美元强＝资本回流</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>105 = 美元强、流动性收紧 → 减 EM、商品</li>
+                    <li>< 100 = 美元弱、风险偏好升 → 加非美资产、商品</li>
+                    <li>周涨幅 > +2 σ = 出现“美元荒”警报</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>6｜铜 / 金 比值</h4>
+                <p><strong>Code:</strong> <code>CAPITALCOM:COPPER/CAPITALCOM:GOLD</code><br>(期货版: <code>TVC:HG1!/TVC:GC1!</code>)</p>
+                <p><strong>定义:</strong> 铜价 ÷ 金价；衡量“增长” vs “避险”取向</p>
+                <p><strong>小白理解:</strong> 铜强＝经济热；金强＝想躲风险</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>跌破 200 DMA → 增长预期转弱，减周期、加防御</li>
+                    <li>站上 200 DMA → 复苏 / 再通胀，增周期、小盘</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>7｜Brent – WTI 价差</h4>
+                <p><strong>Code:</strong> <code>TVC:UKOIL - TVC:USOIL</code></p>
+                <p><strong>定义:</strong> 全球离岸油价 − 美国内陆油价</p>
+                <p><strong>小白理解:</strong> 价差大＝外部更缺油；价差小＝供需差距不大</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>$6 且两桶油同涨 = 供应冲击 / 地缘紧张 → 做多能源、航运</li>
+                    <li>< $2 且油价下跌 = 需求走弱 / 衰退担忧 → 关注降息交易</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>8｜Fed Overnight RRP 余额</h4>
+                <p><strong>Code:</strong> <code>FRED:RRPONTSYD</code></p>
+                <p><strong>定义:</strong> 货币市场基金隔夜把现金存进美联储保险柜（逆回购）规模</p>
+                <p><strong>小白理解:</strong> “钱在不在场内？”RRP ↓＝钱出来；RRP ↑＝钱缩回</p>
+                <p><strong>读法 / 影响:</strong></p>
+                <ul>
+                    <li>RRP ↓ → 资金流向：① 买 T-bill ② 进银行准备金 ③ 买高收益资产 → 流动性 +</li>
+                    <li>RRP ↑ → 资金避险躺 Fed → 流动性 −</li>
+                </ul>
+            </div>
+        </div>
 
+        <h3>市场情绪 & 广度 (Risk Sentiment & Breadth)</h3>
+        <p><i>本行聚焦衡量市场整体的恐慌与自满情绪、追踪主要指数表现，并通过考察市场上涨的普遍性（广度）来评估趋势的健康度。</i></p>
         <!-- Row 3: 风险偏好 -->
         <div class="chart-row">
             <div id="tv-widget-vix" class="tv-widget"></div>
             <div id="tv-widget-spx" class="tv-widget"></div>
             <div id="tv-widget-rsp-spy" class="tv-widget"></div>
             <div id="tv-widget-adline" class="tv-widget"></div>
+        </div>
+        <!-- Row 3 Details -->
+        <div class="indicator-details-row">
+            <div class="indicator-detail-item">
+                <h4>9｜VIX 指数</h4>
+                <p><strong>Code:</strong> <code>CAPITALCOM:VIX</code> （或 <code>CBOE:VIX</code>）</p>
+                <p><strong>定义:</strong> 标普 500 未来 30 天隐含波动率</p>
+                <p><strong>小白理解:</strong> “买股要不要先买保险？”数值≈期权溢价</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>25 = 恐慌 → 买 PUT、减仓</li>
+                    <li>15–20 = 中性</li>
+                    <li>< 15 = 自满 → 可卖期权收溢价</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>10｜S&P 500 指数（SPX）</h4>
+                <p><strong>Code:</strong> <code>FOREXCOM:SPXUSD</code> （或 <code>SP:SPX</code>）</p>
+                <p><strong>定义:</strong> 美国大盘股基准</p>
+                <p><strong>小白理解:</strong> 美股体温计——站上 / 跌破关键均线决定多空</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>收盘 < 50 DMA = 短弱</li>
+                    <li>收盘 < 200 DMA = 中期熊警</li>
+                    <li>突破新高且广度强 = 顺势加仓</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>11｜RSP / SPY 比值</h4>
+                <p><strong>Code:</strong> <code>RSP/SPY</code> (TradingView 输入 <code>AMEX:RSP/ARCA:SPY</code>)</p>
+                <p><strong>定义:</strong> 等权 S&P 500 ÷ 加权 S&P 500，看“草根” vs “巨头”谁更强</p>
+                <p><strong>小白理解:</strong> 比值跌＝巨头独舞；比值涨＝满堂彩</p>
+                <p><strong>阈值参考:</strong></p>
+                <ul>
+                    <li>< 0.27 = 集中风险 ↑ → 防回调</li>
+                    <li>0.33 = 广度好 → 牛市更稳</li>
+                </ul>
+            </div>
+            <div class="indicator-detail-item">
+                <h4>12｜NYSE A/D 线</h4>
+                <p><strong>Code:</strong> <code>USI:ADD</code></p>
+                <p><strong>定义:</strong> 把「今天上涨家数 − 下跌家数」天天累加成曲线</p>
+                <p><strong>小白理解:</strong> 指数涨但 A/D 不跟＝假嗨；A/D 先行＝底部吸筹</p>
+                <p><strong>信号参考:</strong></p>
+                <ul>
+                    <li>指数创新高而 A/D 下拐 = Rally 人气不足</li>
+                    <li>指数横盘、A/D 创新高 = 上涨潜力大</li>
+                </ul>
+            </div>
         </div>
 
     </div> <!-- End of Section 1 -->
