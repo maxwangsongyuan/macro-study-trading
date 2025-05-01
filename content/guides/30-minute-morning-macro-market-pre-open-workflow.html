@@ -53,7 +53,7 @@
         /* --- NEW CSS RULES --- */
         .chart-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr); /* Changed from 3 to 4 columns */
             gap: 20px;
             margin-bottom: 20px; /* Add space below chart rows */
         }
@@ -93,58 +93,31 @@
         <h2>一、实时指标看板</h2>
         <p>（请注意：NDX/SPX 比率显示为独立图表，非直接比率线）</p>
 
-        <!-- Row 1: Charts -->
+        <!-- Row 1: 钱多钱少 -->
         <div class="chart-row">
-            <div id="tv-widget-move" class="tv-widget"></div> <!-- MOVE widget included with TVC:MOVE -->
+            <div id="tv-widget-move" class="tv-widget"></div>
             <div id="tv-widget-us10y" class="tv-widget"></div>
             <div id="tv-widget-t10y2y" class="tv-widget"></div>
+            <div id="tv-widget-hy-oas" class="tv-widget"></div>
         </div>
 
-        <!-- Row 2: Text Checklist 1 -->
-        <div class="text-row">
-            <h3>1. “钱多钱少”路径：利率 + 波动</h3>
-            <ul>
-                <li class="checklist-item"><strong>步骤 1-A:</strong> 自问: MOVE > 120 吗？<br>触发信号 (是): 债市恐慌；看 US10Y 日波幅是否 > ±10 bp。<br>行动示例: 降杠杆、加现金或 T-Bill ETF (BIL)。 (注: 检查下方 MOVE 图表)</li>
-                <li class="checklist-item"><strong>步骤 1-B:</strong> 自问: US10Y > 4.5 % 吗？<br>触发信号 (是): 资金成本高。<br>行动示例: 减长久期资产 (QQQ/ARKK)。</li>
-                <li class="checklist-item"><strong>步骤 1-C:</strong> 自问: T10Y2Y 仍 < –50 bp 且持续？<br>触发信号 (是): 衰退未定价完。<br>行动示例: 提前做防御：必需消费 / 医药。</li>
-            </ul>
-        </div>
-
-        <!-- Row 3: Charts -->
+        <!-- Row 2: 美元 & 商品 -->
         <div class="chart-row">
             <div id="tv-widget-dxy" class="tv-widget"></div>
-            <div id="tv-widget-eurusd" class="tv-widget"></div>
-            <div id="tv-widget-wti" class="tv-widget"></div>
+            <div id="tv-widget-copper-gold" class="tv-widget"></div>
+            <div id="tv-widget-brent-wti" class="tv-widget"></div>
+            <div id="tv-widget-rrp" class="tv-widget"></div>
         </div>
 
-        <!-- Row 4: Text Checklist 2 -->
-        <div class="text-row">
-            <h3>2. “美元挤兑”路径：DXY + EURUSD</h3>
-            <ul>
-                <li class="checklist-item"><strong>步骤 2-A:</strong> 自问: DXY > 105？<br>触发信号 (是): 流动性回流美国。<br>行动示例: 减仓 EM ETF (EEM)、大宗商品。</li>
-                <li class="checklist-item"><strong>步骤 2-B:</strong> 自问: EURUSD < 1.05？<br>触发信号 (是): 避险 or 欧元区疲弱。<br>行动示例: 少碰欧股／奢侈品；关注欧债风险。</li>
-                <li class="checklist-item"><strong>步骤 2-C:</strong> 自问: 若 DXY ↑ 而 US10Y ↓？<br>触发信号: “风险厌恶买美债”模式。<br>行动示例: 关注避险资产（金、长债）机会。</li>
-            </ul>
-        </div>
-
-        <!-- Row 5: Charts -->
+        <!-- Row 3: 风险偏好 -->
         <div class="chart-row">
             <div id="tv-widget-vix" class="tv-widget"></div>
             <div id="tv-widget-spx" class="tv-widget"></div>
-            <div id="tv-widget-ndx-spx" class="tv-widget"></div> <!-- NDX/SPX Ratio -->
+            <div id="tv-widget-rsp-spy" class="tv-widget"></div>
+            <div id="tv-widget-adline" class="tv-widget"></div>
         </div>
 
-        <!-- Row 6: Text Checklist 3 -->
-        <div class="text-row">
-            <h3>3. “风险偏好”路径：股指 + 波动率</h3>
-            <ul>
-                <li class="checklist-item"><strong>步骤 3-A:</strong> 自问: VIX > 25？<br>触发信号 (是): 股市保险费高。<br>行动示例: 停止追高；可买保护性 PUT。</li>
-                <li class="checklist-item"><strong>步骤 3-B:</strong> 自问: SPX < 50MA 且 NDX/SPX 连跌？<br>触发信号 (是): 成长→价值轮动。<br>行动示例: 减科技，加价值 (VTV)。</li>
-                <li class="checklist-item"><strong>步骤 3-C:</strong> 自问: WTI > $100 且 VIX 同升？<br>触发信号 (是): 滞胀风险。<br>行动示例: 更关注能源股、减高估值成长。</li>
-            </ul>
-        </div>
-
-    </div> <!-- End of Section 2 -->
+    </div> <!-- End of Section 1 -->
 
 
     <!-- Section 2: Practical Review Checklist -->
@@ -297,16 +270,19 @@
     <!-- Script to load widgets -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Load TradingView Widgets with corrected symbols
-           loadAdvancedTradingViewWidget('tv-widget-us10y', 'PYTH:US10Y'); // Kept as per JSON
-           loadAdvancedTradingViewWidget('tv-widget-t10y2y', 'FRED:T10Y2Y'); // Corrected
-            loadAdvancedTradingViewWidget('tv-widget-dxy', 'INDEX:DXY'); // Corrected
-            loadAdvancedTradingViewWidget('tv-widget-eurusd', 'FX:EURUSD'); // Was working
-            loadAdvancedTradingViewWidget('tv-widget-spx', 'FOREXCOM:SPXUSD'); // Corrected
-            loadAdvancedTradingViewWidget('tv-widget-ndx-spx', 'FOREXCOM:NAS100/FOREXCOM:SPXUSD'); // Corrected Ratio
-            loadAdvancedTradingViewWidget('tv-widget-wti', 'TVC:USOIL'); // Corrected
-            loadAdvancedTradingViewWidget('tv-widget-vix', 'CAPITALCOM:VIX'); // Corrected
-            loadAdvancedTradingViewWidget('tv-widget-move', 'TVC:MOVE'); // Included as requested, may not work
+            // Load new 3x4 grid of TradingView Widgets
+            loadAdvancedTradingViewWidget('tv-widget-move', 'TVC:MOVE');
+            loadAdvancedTradingViewWidget('tv-widget-us10y', 'PYTH:US10Y');
+            loadAdvancedTradingViewWidget('tv-widget-t10y2y', 'FRED:T10Y2Y');
+            loadAdvancedTradingViewWidget('tv-widget-hy-oas', 'FRED:BAMLH0A0HYM2');
+            loadAdvancedTradingViewWidget('tv-widget-dxy', 'INDEX:DXY');
+            loadAdvancedTradingViewWidget('tv-widget-copper-gold', 'CAPITALCOM:COPPER/CAPITALCOM:GOLD');
+            loadAdvancedTradingViewWidget('tv-widget-brent-wti', 'TVC:UKOIL - TVC:USOIL');
+            loadAdvancedTradingViewWidget('tv-widget-rrp', 'FRED:RRPONTSYD');
+            loadAdvancedTradingViewWidget('tv-widget-vix', 'CAPITALCOM:VIX');
+            loadAdvancedTradingViewWidget('tv-widget-spx', 'FOREXCOM:SPXUSD');
+            loadAdvancedTradingViewWidget('tv-widget-rsp-spy', 'RSP/SPY');
+            loadAdvancedTradingViewWidget('tv-widget-adline', 'USI:ADD');
         });
     </script>
 
