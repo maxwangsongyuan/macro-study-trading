@@ -59,8 +59,71 @@
         .nav-button:active {
             transform: translateY(0); /* Press effect */
         }
+        .section { /* Copied from individual pages for consistency */
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .section h2 { /* Style for h2 within .section */
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            margin-top: 0; /* Adjust if it's the first element */
+            color: #0056b3;
+        }
+        .tv-widget {
+            height: 350px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .chart-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .indicator-details-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+        .indicator-detail-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            line-height: 1.5;
+        }
+        .indicator-detail-item h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #0056b3;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .indicator-detail-item strong {
+            display: inline-block;
+            margin-right: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        .indicator-detail-item code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #c7254e;
+        }
     </style>
-    <!-- No TradingView JS needed here -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script src="../../assets/js/tradingview-widget-loader.js"></script>
+    <script src="../../assets/js/indicator-renderer.js"></script>
 </head>
 <body>
 
@@ -74,7 +137,40 @@
         <a href="macro-indicators-e.html" class="nav-button">常见后续连锁 (数月-数季)</a>
     </div>
 
-    <!-- No script block needed here as widgets are loaded on separate pages -->
+    <div class="section" id="overview-quick-look">
+        <h2>市场即时反应精选</h2>
+        <div id="quick-look-container">
+            <!-- Indicators will be rendered here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const quickLookIndicators = [
+          { nameZh: "美股波动率指数（VIX）", code: "CAPITALCOM:VIX", meaning: "衡量市场恐慌情绪，越高越恐慌", idBase: "overview-vix" },
+          { nameZh: "债券市场波动率指数（MOVE）", code: "TVC:MOVE", meaning: "衡量债券市场的不确定性，越高越不稳定", idBase: "overview-move" },
+          { nameZh: "Baa 企业债与 10 年期国债利差", code: "FRED:BAA10Y", meaning: "反映中等风险企业借钱的风险溢价，越高说明风险越大", idBase: "overview-baa10y" },
+          { nameZh: "ICE BofA 高收益公司债指数", code: "FRED:BAMLH0A0HYM2", meaning: "追踪垃圾债券表现，反映高风险公司的健康状况", idBase: "overview-hyoas" },
+          { nameZh: "10 年与 2 年美债收益率利差（倒挂）", code: "FRED:T10Y2Y", meaning: "预测经济衰退的信号，负数（倒挂）通常预示衰退风险", idBase: "overview-t10y2y" },
+          { nameZh: "标普 500 指数（美元）", code: "FOREXCOM:SPXUSD", meaning: "代表美国大盘股整体表现，看股市好不好", idBase: "overview-spxusd" },
+          { nameZh: "标普等权 ETF / SPY（市场广度）", code: "RSP/SPY", meaning: "看上涨的股票是少数大公司还是多数公司，衡量市场健康度", idBase: "overview-rspspy" },
+          { nameZh: "美股涨跌家数差（Advance-Decline Line）", code: "USI:ADD", meaning: "看上涨的股票多还是下跌的股票多，衡量市场内部力量", idBase: "overview-add" },
+          { nameZh: "美元指数（DXY）", code: "INDEX:DXY", meaning: "衡量美元相对于其他主要货币的强弱", idBase: "overview-dxy" },
+          { nameZh: "布伦特 - WTI 原油价差", code: "TVC:UKOIL-TVC:USOIL", meaning: "两种主要原油的价格差异，反映地区供需和运输成本", idBase: "overview-ukoilusoil" },
+          { nameZh: "铜金比（增长 vs 避险）", code: "CAPITALCOM:COPPER/CAPITALCOM:GOLD", meaning: "铜代表工业增长，黄金代表避险。比率上升通常预示经济看好", idBase: "overview-coppergold" }
+        ];
+
+        if (typeof renderSpecificIndicators === 'function') {
+          renderSpecificIndicators(quickLookIndicators, 'quick-look-container');
+        } else {
+          console.error("renderSpecificIndicators function is not defined. Ensure indicator-renderer.js is loaded and the function exists.");
+          const container = document.getElementById('quick-look-container');
+          if (container) {
+            container.innerHTML = '<p style="color:red;">Error: Could not render quick look indicators. renderSpecificIndicators not found.</p>';
+          }
+        }
+      });
+    </script>
 
 </body>
 </html>

@@ -10,6 +10,8 @@ const allIndicators = [
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "标普等权 ETF / SPY（市场广度）", code: "RSP/SPY", meaning: "看上涨的股票是少数大公司还是多数公司，衡量市场健康度", idBase: "rspspy" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "美股涨跌家数差（Advance-Decline Line）", code: "USI:ADD", meaning: "看上涨的股票多还是下跌的股票多，衡量市场内部力量", idBase: "add" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "美元指数（DXY）", code: "INDEX:DXY", meaning: "衡量美元相对于其他主要货币的强弱", idBase: "dxy" },
+    { sectionTitle: "市场即时反应 (1-3天)", nameZh: "布伦特 - WTI 原油价差", code: "TVC:UKOIL-TVC:USOIL", meaning: "两种主要原油的价格差异，反映地区供需和运输成本", idBase: "ukoilusoil" },
+    { sectionTitle: "市场即时反应 (1-3天)", nameZh: "铜金比（增长 vs 避险）", code: "CAPITALCOM:COPPER/CAPITALCOM:GOLD", meaning: "铜代表工业增长，黄金代表避险。比率上升通常预示经济看好", idBase: "coppergold" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "美国新屋销售", code: "ECONOMICS:USEHS", meaning: "反映房地产市场的活跃程度和买家信心", idBase: "usehs" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "房价中位数", code: "FRED:MSPUS", meaning: "看房子价格的总体水平和变化趋势", idBase: "mspus" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "房屋建筑商 ETF（XHB）", code: "AMEX:XHB", meaning: "追踪盖房子公司的股票表现，预示未来房市走向", idBase: "xhb" },
@@ -23,19 +25,16 @@ const allIndicators = [
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "美国航空公司 ETF（JETS）", code: "AMEX:JETS", meaning: "反映航空旅游业的景气度", idBase: "jets" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "希尔顿酒店", code: "NYSE:HLT", meaning: "反映酒店住宿业的景气度", idBase: "hlt" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "麦当劳公司", code: "NYSE:MCD", meaning: "反映快餐和大众消费的状况", idBase: "mcd" },
-    { sectionTitle: "市场即时反应 (1-3天)", nameZh: "铜金比（增长 vs 避险）", code: "CAPITALCOM:COPPER/CAPITALCOM:GOLD", meaning: "铜代表工业增长，黄金代表避险。比率上升通常预示经济看好", idBase: "coppergold" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "布伦特原油", code: "TVC:UKOIL", meaning: "全球重要的原油价格，影响通胀和能源行业", idBase: "ukoil" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "玉米期货 (Corn Futures)", code: "CAPITALCOM:CORN", meaning: "重要的粮食价格，影响食品成本和通胀。CBOT:ZC1! 是芝加哥商品交易所交易的玉米期货价格。", idBase: "corn" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "大豆期货 (Soybean Futures)", code: "CAPITALCOM:SOYBEAN", meaning: "重要的油籽价格，影响食品和饲料成本。CBOT:ZS1! 是芝加哥商品交易所交易的大豆期货价格。", idBase: "soybean" },
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "小麦期货 (Wheat Futures)", code: "CAPITALCOM:WHEAT", meaning: "重要的粮食价格，影响食品成本和通胀。CBOT:ZW1! 是芝加哥商品交易所交易的小麦期货价格。", idBase: "wheat" },
-    { sectionTitle: "市场即时反应 (1-3天)", nameZh: "布伦特 - WTI 原油价差", code: "TVC:UKOIL-TVC:USOIL", meaning: "两种主要原油的价格差异，反映地区供需和运输成本", idBase: "ukoilusoil" },
-    { sectionTitle: "市场即时反应 (1-3天)", nameZh: "PPI 总指数（全部商品）", code: "FRED:PPIACO", meaning: "衡量生产者（工厂）购买商品/服务的价格变化，预示未来消费物价", idBase: "ppiaco" },
 
     // Section D: 初期实质影响 & 政策落地 (数周-数月)
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "美元兑日元汇率", code: "FX:USDJPY", meaning: "衡量美元和日元的兑换比率，受利率和风险偏好影响", idBase: "usdjpy" },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "有效联邦基金利率", code: "FRED:EFFR", meaning: "银行间互相借钱的实际利率，反映美联储的基准利率水平", idBase: "effr" },
-    { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "美联储总资产负债表", code: "FRED:WALCL", meaning: "美联储持有多少资产（国债等），反映其放水/收水力度", idBase: "walcl-d" }, // Changed idBase for D
-    { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "逆回购协议未清余额", code: "FRED:RRPONTSYD", meaning: "金融机构存在美联储的短期闲钱，反映市场流动性充裕程度", idBase: "rrpontsyd-d" }, // Changed idBase for D
+    { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "美联储总资产负债表", code: "FRED:WALCL", meaning: "美联储持有多少资产（国债等），反映其放水/收水力度", idBase: "walcl-d" },
+    { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "逆回购协议未清余额", code: "FRED:RRPONTSYD", meaning: "金融机构存在美联储的短期闲钱，反映市场流动性充裕程度", idBase: "rrpontsyd-d" },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "新屋建筑许可", code: "FRED:PERMIT", meaning: "未来准备盖多少新房子，预示房市建设活动", idBase: "permit" },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "初请失业金人数（四周平均）", code: "FRED:IC4WSA", meaning: "平滑后的每周新增失业人数，看劳动力市场好坏", idBase: "ic4wsa" },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "密歇根消费者信心指数", code: "FRED:UMCSENT", meaning: "衡量消费者对经济和个人财务状况的信心", idBase: "umcsent" },
@@ -48,8 +47,9 @@ const allIndicators = [
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "库存销售比", code: "FRED:ISRATIO", meaning: "库存相对于销售额的比例，太高可能说明卖不动了", idBase: "isratio-d" },
 
     // Section E: 常见后续连锁 (数月-数季)
-    { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "广义货币供应量 M2", code: "FRED:M2SL", meaning: "衡量市场上有多少钱（现金、存款等），影响通胀和经济活动", idBase: "m2sl-e" }, // Changed idBase for E
+    { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "广义货币供应量 M2", code: "FRED:M2SL", meaning: "衡量市场上有多少钱（现金、存款等），影响通胀和经济活动", idBase: "m2sl-e" },
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "实际国内生产总值（GDP）", code: "FRED:GDPC1", meaning: "国家整体经济产出的总价值（去除通胀影响），衡量经济增长", idBase: "gdpc1" },
+    { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "美国GDP季环比增长率", code: "ECONOMICS:USGDPQQ", meaning: "衡量美国国内生产总值相对于上一季度的增长速度，反映短期经济动能。", idBase: "usgdpqq" },
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "消费者物价指数（CPI）", code: "FRED:CPIAUCSL", meaning: "衡量普通消费者购买一篮子商品/服务的价格变化，即通货膨胀率", idBase: "cpiaucsl" },
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "单位劳动成本（非农）", code: "FRED:ULCNFB", meaning: "生产一个单位产品需要多少人工成本，影响企业定价和通胀", idBase: "ulcnfb" },
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "失业率", code: "FRED:UNRATE", meaning: "想工作但找不到工作的人占总劳动力的比例", idBase: "unrate" },
@@ -58,7 +58,8 @@ const allIndicators = [
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "商业银行资产总额", code: "FRED:W875RX1", meaning: "所有商业银行的总资产规模，反映银行体系的大小和健康", idBase: "w875rx1" },
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "非农就业总人数", code: "FRED:PAYEMS", meaning: "美国新增了多少工作岗位（不含农业），最重要的经济数据之一", idBase: "payems-e" },
     { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "商业和工业贷款余额", code: "FRED:BUSLOANS", meaning: "看企业向银行借了多少钱搞经营，反映企业扩张意愿", idBase: "busloans-e" },
-    { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "库存销售比", code: "FRED:ISRATIO", meaning: "库存相对于销售额的比例，太高可能说明卖不动了", idBase: "isratio-e" }
+    { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "库存销售比", code: "FRED:ISRATIO", meaning: "库存相对于销售额的比例，太高可能说明卖不动了", idBase: "isratio-e" },
+    { sectionTitle: "常见后续连锁 (数月-数季)", nameZh: "PPI 总指数（全部商品）", code: "FRED:PPIACO", meaning: "衡量生产者（工厂）购买最终产品和服务的平均价格变化，是消费者物价指数(CPI)的领先指标，预示未来通胀压力。", idBase: "ppiaco-e" }
 ];
 
 /**
@@ -77,29 +78,60 @@ function renderIndicatorSection(sectionTitle, targetContainerId) {
         container.innerHTML = `<p>No indicators found for section: ${sectionTitle}</p>`;
         return;
     }
+
     let htmlContent = '';
-    const indicatorsToLoad = [];
-    for (let i = 0; i < sectionIndicators.length; i += 4) {
-        const rowIndicators = sectionIndicators.slice(i, i + 4);
-        htmlContent += '<div class="chart-row">\n';
-        rowIndicators.forEach(indicator => {
-            const widgetId = `tv-widget-${indicator.idBase}`;
-            htmlContent += `    <div id="${widgetId}" class="tv-widget"></div>\n`;
-            indicatorsToLoad.push({ id: widgetId, code: indicator.code });
-        });
-        for (let j = rowIndicators.length; j < 4; j++) { htmlContent += '    <div></div>'; }
-        htmlContent += '</div>\n';
-        htmlContent += '<div class="indicator-details-row">\n';
-        rowIndicators.forEach(indicator => {
-            htmlContent += `    <div class="indicator-detail-item">\n`;
-            htmlContent += `        <h4>${indicator.nameZh}</h4>\n`;
-            htmlContent += `        <p><strong>Code:</strong> <code>${indicator.code}</code></p>\n`;
-            htmlContent += `        <p><strong>含义:</strong> ${indicator.meaning}</p>\n`;
-            htmlContent += `    </div>\n`;
-        });
-        for (let j = rowIndicators.length; j < 4; j++) { htmlContent += '    <div></div>'; }
-        htmlContent += '</div>\n';
+    const indicatorsToLoad = []; // Moved here to be accessible by helper
+
+    // Helper function to render a group of indicators
+    function renderGroupOfIndicators(indicatorsInGroup, groupIndicatorsToLoad) {
+        let groupHtml = '';
+        // Sort indicatorsInGroup based on the order in idBaseList if needed, or process as is
+        // For simplicity, we'll process them in the order they appear in indicatorsInGroup
+
+        for (let i = 0; i < indicatorsInGroup.length; i += 4) {
+            const rowIndicators = indicatorsInGroup.slice(i, i + 4);
+            groupHtml += '<div class="chart-row">\n';
+            rowIndicators.forEach(indicator => {
+                const widgetId = `tv-widget-${indicator.idBase}`;
+                groupHtml += `    <div id="${widgetId}" class="tv-widget"></div>\n`;
+                groupIndicatorsToLoad.push({ id: widgetId, code: indicator.code });
+            });
+            for (let j = rowIndicators.length; j < 4; j++) { groupHtml += '    <div></div>'; }
+            groupHtml += '</div>\n';
+            groupHtml += '<div class="indicator-details-row">\n';
+            rowIndicators.forEach(indicator => {
+                groupHtml += `    <div class="indicator-detail-item">\n`;
+                groupHtml += `        <h4>${indicator.nameZh}</h4>\n`;
+                groupHtml += `        <p><strong>Code:</strong> <code>${indicator.code}</code></p>\n`;
+                groupHtml += `        <p><strong>含义:</strong> ${indicator.meaning}</p>\n`;
+                groupHtml += `    </div>\n`;
+            });
+            for (let j = rowIndicators.length; j < 4; j++) { groupHtml += '    <div></div>'; }
+            groupHtml += '</div>\n';
+        }
+        return groupHtml;
     }
+
+    if (sectionTitle === "市场即时反应 (1-3天)") {
+        const groupOrder = {
+            "精选": ["vix", "move", "baa10y", "hyoas", "t10y2y", "spxusd", "rspspy", "add", "dxy", "coppergold"],
+            "房地产": ["usehs", "mspus", "xhb", "ushmi", "hossupusm", "mortgage30us", "lbs1", "pcu4441", "wfc", "pfsi"],
+            "民生": ["jets", "hlt", "mcd"],
+            "大宗商品": ["ukoilusoil", "ukoil", "corn", "soybean", "wheat"]
+        };
+
+        for (const groupName in groupOrder) {
+            htmlContent += `<h3>${groupName}</h3>`;
+            const indicatorsInThisGroup = sectionIndicators.filter(ind => groupOrder[groupName].includes(ind.idBase));
+            // Sort them according to the order in groupOrder[groupName]
+            indicatorsInThisGroup.sort((a, b) => groupOrder[groupName].indexOf(a.idBase) - groupOrder[groupName].indexOf(b.idBase));
+            htmlContent += renderGroupOfIndicators(indicatorsInThisGroup, indicatorsToLoad);
+        }
+
+    } else { // For sections D and E (and any other future sections without specific grouping)
+        htmlContent += renderGroupOfIndicators(sectionIndicators, indicatorsToLoad);
+    }
+
     container.innerHTML = htmlContent;
     setTimeout(() => {
         indicatorsToLoad.forEach(widgetInfo => {
@@ -232,6 +264,73 @@ function renderPolicySection(targetContainerId) {
                 loadAdvancedTradingViewWidget(widgetInfo.id, widgetInfo.code);
             } else {
                 console.error('loadAdvancedTradingViewWidget function is not defined.');
+            }
+        });
+    }, 100);
+}
+
+/**
+ * Renders a specific array of indicators into the target container.
+ * @param {Array<Object>} indicatorsArray - An array of indicator objects.
+ * @param {string} targetContainerId - The ID of the HTML element to render into.
+ */
+function renderSpecificIndicators(indicatorsArray, targetContainerId) {
+    const container = document.getElementById(targetContainerId);
+    if (!container) {
+        console.error(`Target container with ID "${targetContainerId}" not found for specific indicators.`);
+        return;
+    }
+    if (!indicatorsArray || indicatorsArray.length === 0) {
+        container.innerHTML = `<p>No specific indicators provided to render.</p>`;
+        return;
+    }
+
+    let htmlContent = '';
+    const indicatorsToLoad = []; // Store widget info to load after HTML injection
+
+    // Group indicators into rows of 4
+    for (let i = 0; i < indicatorsArray.length; i += 4) {
+        const rowIndicators = indicatorsArray.slice(i, i + 4);
+
+        // --- Create Chart Row ---
+        htmlContent += '<div class="chart-row">\n';
+        rowIndicators.forEach(indicator => {
+            const widgetId = `tv-widget-${indicator.idBase}`; // Ensure idBase is unique for these
+            htmlContent += `    <div id="${widgetId}" class="tv-widget"></div>\n`;
+            indicatorsToLoad.push({ id: widgetId, code: indicator.code });
+        });
+        // Add placeholders if the row is not full
+        for (let j = rowIndicators.length; j < 4; j++) {
+            htmlContent += '    <div></div>'; // Empty div as placeholder
+        }
+        htmlContent += '</div>\n';
+
+        // --- Create Details Row ---
+        htmlContent += '<div class="indicator-details-row">\n';
+        rowIndicators.forEach(indicator => {
+            htmlContent += `    <div class="indicator-detail-item">\n`;
+            htmlContent += `        <h4>${indicator.nameZh}</h4>\n`;
+            htmlContent += `        <p><strong>Code:</strong> <code>${indicator.code}</code></p>\n`;
+            htmlContent += `        <p><strong>含义:</strong> ${indicator.meaning}</p>\n`;
+            htmlContent += `    </div>\n`;
+        });
+        // Add placeholders if the row is not full
+        for (let j = rowIndicators.length; j < 4; j++) {
+            htmlContent += '    <div></div>'; // Empty div as placeholder
+        }
+        htmlContent += '</div>\n';
+    }
+
+    // Inject the generated HTML
+    container.innerHTML = htmlContent;
+
+    // Load the TradingView widgets after HTML is in the DOM
+    setTimeout(() => {
+        indicatorsToLoad.forEach(widgetInfo => {
+            if (typeof loadAdvancedTradingViewWidget === 'function') {
+                loadAdvancedTradingViewWidget(widgetInfo.id, widgetInfo.code);
+            } else {
+                console.error('loadAdvancedTradingViewWidget function is not defined. Make sure tradingview-widget-loader.js is loaded.');
             }
         });
     }, 100);
