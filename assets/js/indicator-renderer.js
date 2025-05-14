@@ -31,6 +31,13 @@ const allIndicators = [
     { sectionTitle: "市场即时反应 (1-3天)", nameZh: "小麦期货 (Wheat Futures)", code: "CAPITALCOM:WHEAT", meaning: "重要的粮食价格，影响食品成本和通胀。CBOT:ZW1! 是芝加哥商品交易所交易的小麦期货价格。", idBase: "wheat" },
 
     // Section D: 初期实质影响 & 政策落地 (数周-数月)
+    {
+        sectionTitle: "初期实质影响 & 政策落地 (数周-数月)",
+        nameZh: "美元兑人民币汇率",
+        code: "USDCNY",
+        meaning: "衡量美元和人民币的兑换比率，反映两国经济状况、贸易关系及资本流动。", // You can refine this meaning if you have a more specific one in mind.
+        idBase: "usdcny" // Ensuring a unique idBase
+    },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "美元兑日元汇率", code: "FX:USDJPY", meaning: "衡量美元和日元的兑换比率，受利率和风险偏好影响", idBase: "usdjpy" },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "有效联邦基金利率", code: "FRED:EFFR", meaning: "银行间互相借钱的实际利率，反映美联储的基准利率水平", idBase: "effr" },
     { sectionTitle: "初期实质影响 & 政策落地 (数周-数月)", nameZh: "美联储总资产负债表", code: "FRED:WALCL", meaning: "美联储持有多少资产（国债等），反映其放水/收水力度", idBase: "walcl-d" },
